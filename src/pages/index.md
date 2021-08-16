@@ -14,7 +14,6 @@ topIcons:
   icon4:
     image: /img/home.svg
     label: Delivery
-
 partners:
   heading: Partners
   items:
@@ -24,3 +23,6 @@ partners:
       alt: London Bike Kitchen
     - image: /img/cie.png
       alt: Cicling Industries Europe
+    - image: /img/tryd.png
+      alt: Tryd
+---
