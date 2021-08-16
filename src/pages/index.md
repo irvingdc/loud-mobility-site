@@ -27,4 +27,13 @@ topicons:
   icon4:
     image: /img/home.svg
     label: Delivery
+partners:
+  heading: Partners
+  items:
+    - image: /img/bfb.png
+      alt: Big Fun Bikes
+    - image: /img/lbk.png
+      alt: London Bike Kitchen
+    - image: /img/cie.png
+      alt: Cicling Industries Europe
 ---
