@@ -1,0 +1,67 @@
+.container {
+    padding: 100px 10px 50px;
+    position: relative;
+    overflow: hidden;
+
+    >div {
+        /*this is the Layout component*/
+        z-index: 30;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >div {
+            width: 33.33%;
+        }
+
+        >div:nth-child(odd) {
+            height: 510px;
+        }
+
+        >div:nth-child(even) {
+            height: 570px;
+        }
+    }
+
+    >img {
+        z-index: 10;
+        position: absolute;
+        height: 120%;
+        max-height: 900px;
+        bottom: -180px;
+        left: -320px;
+        transform: rotate(270deg);
+    }
+}
+
+@media (max-width: 1100px) {
+    .container {
+        >div {
+            >div:nth-child(odd) {
+                height: 550px;
+                padding: 10px;
+            }
+
+            >div:nth-child(even) {
+                height: 610px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .container{
+        padding: 50px 0px;
+        >div {
+            flex-direction: column;
+            > div{
+                width: 100%;
+                height: unset !important;
+                padding: 10px 10px 40px 10px !important;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

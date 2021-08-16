@@ -1,0 +1,116 @@
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    h3 {
+        font-size: 80px;
+        text-align: center;
+        padding: 10px;
+        text-transform: uppercase;
+        font-style: italic;
+        font-weight: 600;
+        letter-spacing: 3px;
+    }
+
+    >img {
+        z-index: 10;
+        position: absolute;
+        height: 120%;
+        max-height: 900px;
+        top: 0px;
+        left: calc(50% + 120px);
+        transform: rotate(270deg);
+    }
+
+    form {
+        display: flex;
+        max-width: 670px;
+        flex-wrap: wrap;
+        margin: auto;
+
+        >div {
+            width: 100%;
+            padding: 0 20px 0 20px;
+        }
+
+        .label {
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: block;
+            margin-left: 5px;
+        }
+
+        .smallInputContainer {
+            z-index: 30;
+            width: 50%;
+            padding: 0 20px 0 20px;
+        }
+
+        .largeInputContainer {
+            z-index: 30;
+            width: 100%;
+            padding: 0 20px 0 20px;
+        }
+
+        >button {
+            position: relative;
+            width: calc(100% - 40px);
+            height: 65px;
+            background: black;
+            border: none;
+            padding: 10px;
+            color: white;
+            border-radius: 100px;
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: 600;
+            margin: auto;
+            margin-top: 40px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .spaceHolder {
+            width: 100%;
+            height: 10px;
+        }
+    }
+}
+
+@media (max-width:630px) {
+    .container {
+        h3 {
+            margin-bottom: 20px;
+            font-size: 60px;
+            line-height: 60px;
+        }
+
+        >img {
+            left: 170px !important;
+        }
+
+        form {
+            .smallInputContainer {
+                width: 100%;
+            }
+
+            .spaceHolder {
+                height: 30px !important;
+            }
+        }
+    }
+}
+
+@media (max-width:390px) {
+    .container {
+
+        form {
+            .smallInputContainer {
+                padding: 0;
+            }
+        }
+    }
+}
