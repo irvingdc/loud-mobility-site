@@ -14,6 +14,21 @@ topIcons:
   icon4:
     image: /img/home.svg
     label: Delivery
+packages:
+  package1:
+    name: SOLO
+    price: "29.99"
+    link: /
+    bullets:
+      - Single service for a single bike
+      - Get a fair quote from a trusted partner
+      - Hassle free fixes and maintenance
+  package2:
+    name: RIDER
+    price: "14.99"
+  package3:
+    name: TEAM
+    price: "18.99"
 testimonials:
   heading: Word on the street is...
   testimonial1:
