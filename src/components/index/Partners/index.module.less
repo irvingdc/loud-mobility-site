@@ -18,10 +18,15 @@
     }
 
     img{
-        display: block;
+        display: inline-block;
         height: 120px;
         width: auto;
         margin: 10px 25px;
+        filter: grayscale(1);
+        transition: all 0.2s;
+    }
+    img:hover{
+        filter: grayscale(0);
     }
 }
 @media (max-width: 1050px){

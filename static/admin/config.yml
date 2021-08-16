@@ -95,6 +95,119 @@ collections:
                 ],
             }
           - {
+              label: "Packages",
+              name: packages,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "Package 1",
+                    name: package1,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Name, name: name, widget: string },
+                        { label: Price, name: price, widget: string },
+                        {
+                          label: "Learn More Link",
+                          name: link,
+                          widget: string,
+                        },
+                        {
+                          label: Bullets,
+                          name: bullets,
+                          widget: list,
+                          field: { label: Text, name: text, widget: string },
+                        },
+                      ],
+                  },
+                  {
+                    label: "Package 2",
+                    name: package2,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Name, name: name, widget: string },
+                        { label: Price, name: price, widget: string },
+                        {
+                          label: "Learn More Link",
+                          name: link,
+                          widget: string,
+                        },
+                        {
+                          label: Bullets,
+                          name: bullets,
+                          widget: list,
+                          field: { label: Text, name: text, widget: string },
+                        },
+                      ],
+                  },
+                  {
+                    label: "Package 3",
+                    name: package3,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Name, name: name, widget: string },
+                        { label: Price, name: price, widget: string },
+                        {
+                          label: "Learn More Link",
+                          name: link,
+                          widget: string,
+                        },
+                        {
+                          label: Bullets,
+                          name: bullets,
+                          widget: list,
+                          field: { label: Text, name: text, widget: string },
+                        },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: "Testimonials",
+              name: testimonials,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: "Testimonial 1",
+                    name: testimonial1,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Name, name: name, widget: string },
+                        { label: Text, name: text, widget: string },
+                      ],
+                  },
+                  {
+                    label: "Testimonial 2",
+                    name: testimonial2,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Name, name: name, widget: string },
+                        { label: Text, name: text, widget: string },
+                      ],
+                  },
+                  {
+                    label: "Testimonial 3",
+                    name: testimonial3,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Name, name: name, widget: string },
+                        { label: Text, name: text, widget: string },
+                      ],
+                  },
+                ],
+            }
+          - {
               label: Partners,
               name: partners,
               widget: object,

@@ -12,22 +12,31 @@ import Meta from "components/shared/Meta";
 
 export const IndexPageTemplate = ({
   title,
-  topIcons
+  topIcons,
+  partners,
+  testimonials,
+  packages
 }) => (
   <>
     <Nav />
     <Meta url="/" />
     <Intro title={title} topIcons={topIcons}/>
-    <BookingCards />
+    <BookingCards packages={packages}/>
     <BookingForm />
-    <QuotesBlock />
-    <Partners />
+    <QuotesBlock testimonials={testimonials}/>
+    <Partners partners={partners}/>
     <Footer />
   </>
 )
 
 const IconType = PropTypes.shape({
   label: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+})
+
+const TestimonialType = PropTypes.shape({
+  text: PropTypes.string,
+  name: PropTypes.string,
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 })
 
@@ -39,7 +48,23 @@ IndexPageTemplate.propTypes = {
     icon2: IconType,
     icon3: IconType,
     icon4: IconType,
+  }), 
+  testimonials: PropTypes.shape({
+    heading: PropTypes.string,
+    testimonial1: TestimonialType,
+    testimonial2: TestimonialType,
+    testimonial3: TestimonialType,
   }),
+  partners: PropTypes.shape({
+    items: PropTypes.array,
+    heading: PropTypes.string
+  }),
+  packages: PropTypes.shape({
+    link: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.string,
+    list: PropTypes.array
+  })
 }
 
 const IndexPage = ({ data }) => {
@@ -48,6 +73,9 @@ const IndexPage = ({ data }) => {
     <IndexPageTemplate
       title={frontmatter.title}
       topIcons={frontmatter.topIcons}
+      partners={frontmatter.partners}
+      testimonials={frontmatter.testimonials}
+      packages={frontmatter.packages}
     />
   )
 }
@@ -93,6 +121,63 @@ export const pageQuery = graphql`
             label
           }
         }
+
+        packages{
+          package1{
+            bullets
+            link
+            name
+            price
+          }
+          package2{
+            bullets
+            link
+            name
+            price
+          }
+          package3{
+            bullets
+            link
+            name
+            price
+          }
+        }
+
+        testimonials { 
+          heading
+          testimonial1 {
+            image{
+              publicURL
+            }
+            name
+            text
+          }
+          testimonial2 {
+            image{
+              publicURL
+            }
+            name
+            text
+          }
+          testimonial3 {
+            image{
+              publicURL
+            }
+            name
+            text
+          }
+        }
+
+        partners {
+          heading
+          items {
+            image {
+              publicURL
+            }
+            alt
+          }
+        }
+        
       }
     }
   }
