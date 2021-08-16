@@ -24,5 +24,5 @@ partners:
     - image: /img/cie.png
       alt: Cicling Industries Europe
     - image: /img/tryd.png
-      alt: Tryd
+      alt: "Tryd "
 ---
