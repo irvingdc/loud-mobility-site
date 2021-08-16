@@ -1,11 +1,9 @@
 import React, { useState } from "react"
 import Radio from "../../shared/Radio"
 import * as classes from "./index.module.less"
-import house from "images/Home.svg"
-import tool from "images/Service.svg"
-import hand from "images/Booking.svg"
 import Layout from "components/shared/Layout"
 import { Link } from "gatsby"
+import marked from "marked"
 
 const Item = ({ img, label }) =>
     <li className={classes.iconItem}>
@@ -17,7 +15,7 @@ const Item = ({ img, label }) =>
         </h2>
     </li>
 
-export default ({ title }) => {
+export default ({ title, topIcons }) => {
 
     let [service, setService] = useState("services")
 
@@ -26,9 +24,8 @@ export default ({ title }) => {
     }
 
     return <div className={classes.container}>
-        <h1>
-            {title}
-        </h1>
+        <div dangerouslySetInnerHTML={{ __html: marked(title) }} className={classes.title}>
+        </div>
         <div className={classes.first}>
             <div>
                 <Radio
@@ -43,20 +40,20 @@ export default ({ title }) => {
             <Layout>
                 <ul>
                     <Item
-                        img={hand}
-                        label="Booking"
+                        img={topIcons.icon1.image.publicURL || topIcons.icon1.image}
+                        label={topIcons.icon1.label}
                     />
                     <Item
-                        img={house}
-                        label="Collection"
+                        img={topIcons.icon2.image.publicURL || topIcons.icon2.image}
+                        label={topIcons.icon2.label}
                     />
                     <Item
-                        img={tool}
-                        label="Service"
+                        img={topIcons.icon3.image.publicURL || topIcons.icon3.image}
+                        label={topIcons.icon3.label}
                     />
                     <Item
-                        img={house}
-                        label="Delivery"
+                        img={topIcons.icon4.image.publicURL || topIcons.icon4.image}
+                        label={topIcons.icon4.label}
                     />
                 </ul>
             </Layout>

@@ -1,19 +1,30 @@
 @title-size: 90px;
 
 .container {
-    h1 {
-        text-align: center;
-        text-transform: uppercase;
-        font-size: @title-size;
-        max-width: 700px;
+    .title {
         margin: 40px auto 70px;
-        font-style: italic;
-        font-weight: 900;
-        letter-spacing: 2px;
-        line-height: @title-size;
-        padding: 0px 10px;
 
-        strong, b {
+        >* {
+            text-align: center;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-size: @title-size;
+            max-width: 700px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: @title-size;
+            padding: 0px 10px;
+            margin: 0 auto;
+        }
+
+        strong,
+        b {
             color: white;
             font-weight: 900;
         }
@@ -105,28 +116,39 @@
         }
     }
 }
+
 @media (max-width: 490px) {
     .container {
         padding: 0px;
-        h1{
-            font-size: 75px;
-            line-height: 75px;
+
+        .title {
+
             margin: 30px auto 40px;
+
+            h1 {
+                font-size: 75px;
+                line-height: 75px;
+            }
         }
+
         .second {
             ul {
                 padding: 0;
             }
         }
+
         .iconItem {
             justify-content: flex-start;
-            div{
+
+            div {
                 padding: 4px;
-                img{
+
+                img {
                     width: 24px;
                 }
             }
-            h2{
+
+            h2 {
                 font-size: 14px;
             }
         }
