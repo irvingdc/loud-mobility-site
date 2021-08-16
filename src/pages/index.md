@@ -1,4 +1,4 @@
 ---
 templateKey: index-page
-title: "For people with bikes "
+title: "# For people with **bikes**"
 ---
