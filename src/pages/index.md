@@ -26,9 +26,17 @@ packages:
   package2:
     name: RIDER
     price: "14.99"
+    bullets:
+      - Regular servicing to keep your bike roadworthy year-round
+      - Keep your costs low withthis package
+      - No need to keep booking with service reminders
   package3:
     name: TEAM
     price: "18.99"
+    bullets:
+      - A single service for 3 or more bikes
+      - Get fair individual quotes from a trusted partner
+      - Hassle free fixes and maintenance for the whole team
 testimonials:
   heading: Word on the street is...
   testimonial1:
