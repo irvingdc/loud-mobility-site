@@ -1,0 +1,37 @@
+.container {
+    z-index: 20;
+    display: flex;
+    position: relative;
+    width: 100%;
+    background-color: #efefef;
+    border-radius: 100px;
+
+    button {
+        width: 50%;
+        background: transparent;
+        border: none;
+        border-radius: 100px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #c4c4c4;
+        
+        * {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .selected {
+        background: white;
+        color: #5d5e5d;
+    }
+}

@@ -1,0 +1,69 @@
+.container {
+  padding: 100px 10px 100px;
+  position: relative;
+  overflow: hidden;
+
+  h3 {
+    font-size: 80px;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin: auto;
+    margin-bottom: 50px;
+    max-width: 15ch;
+  }
+
+  >div {
+    /*this is the Layout component*/
+    z-index: 30;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    >div {
+      width: 33.33%;
+    }
+
+    >div:nth-child(odd) {
+      padding-top: 35px;
+    }
+  }
+
+  >img {
+    z-index: 10;
+    position: absolute;
+    height: 120%;
+    max-height: 900px;
+    top: -100px;
+    left: calc(50% + 140px);
+  }
+}
+@media (max-width: 830px){
+  .container{
+    > img{
+      left: 180px;
+      top: 100px
+    }
+    h3{
+      margin-bottom: 10px;
+      font-size: 60px;
+      line-height: 60px;
+    }
+    > div{
+      flex-direction: column;
+      >div:nth-child(odd) {
+        padding-top: 0;
+      }
+      > div{
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto 0 !important;
+        padding-top: 30px !important;
+      }
+    }
+  }
+}

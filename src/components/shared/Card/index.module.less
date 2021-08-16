@@ -1,0 +1,157 @@
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.2s;
+
+    >label {
+        padding: 15px 0px 34px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .pricing {
+        text-align: center;
+        width: 100%;
+        font-size: 42px;
+        font-weight: 600;
+        display: block;
+        position: relative;
+
+        .extra {
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 100%;
+            font-weight: 600;
+            display: block;
+            position: absolute;
+        }
+    }
+
+
+
+    ul {
+        padding: 50px 20px 0px;
+        margin: 0px;
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-bottom: 18px;
+
+            span {
+                width: 24px;
+                height: 24px;
+                border-radius: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: black;
+                margin-top: 4px;
+
+                img {
+                    width: 12px;
+                    height: auto;
+                    display: block;
+                }
+            }
+
+            p {
+                width: calc(100% - 36px);
+                text-align: left;
+                margin: 0;
+                line-height: 21px;
+            }
+        }
+    }
+
+    .learnMore {
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-align: center;
+        margin: 0px;
+    }
+
+    button {
+        width: calc(100% - 80px);
+        background: black;
+        border: none;
+        padding: 10px;
+        color: white;
+        border-radius: 12px;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: 600;
+        margin: auto;
+        display: block;
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        cursor: pointer;
+    }
+}
+
+.container:hover {
+    transform: scale(1.02);
+    z-index: 40;
+}
+
+.dark {
+    background: black;
+    box-shadow: 0px 16px 18px -8px #00000080;
+
+    * {
+        color: white;
+    }
+
+    .pricing {
+        font-size: 52px;
+    }
+
+    ul {
+        li {
+            span {
+                background: @primary;
+
+            }
+        }
+    }
+
+    button {
+        background: @primary;
+        padding: 16px;
+        bottom: 24px;
+    }
+}
+
+@media (max-width: 780px) {
+
+    .container {
+        > label{
+          padding-bottom: 10px;  
+        }
+        .extra,
+        button {
+            position: relative !important;
+            margin: auto !important;
+            right: unset !important;
+            bottom: unset !important;
+        }
+
+        ul {
+            padding-top: 20px;
+            li{
+                padding-bottom: 10px;
+                span{
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+
+}

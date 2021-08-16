@@ -1,0 +1,134 @@
+@title-size: 90px;
+
+.container {
+    h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: @title-size;
+        max-width: 700px;
+        margin: 40px auto 70px;
+        font-style: italic;
+        font-weight: 900;
+        letter-spacing: 2px;
+        line-height: @title-size;
+        padding: 0px 10px;
+
+        strong, b {
+            color: white;
+            font-weight: 900;
+        }
+    }
+
+    .first {
+        text-align: center;
+        position: relative;
+        padding: 50px 0px 10px;
+
+        >div {
+            width: 340px;
+            margin: auto;
+        }
+    }
+
+    .first::after,
+    .second::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: calc(100% - 90px);
+        height: 100%;
+        bottom: 0px;
+        right: 0px;
+        background: black;
+        border-top-left-radius: 65px;
+        z-index: 10;
+    }
+
+    .second {
+        padding: 100px 20px 50px;
+        position: relative;
+        overflow: hidden;
+
+        ul {
+            position: relative;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .second::after {
+        width: calc(100% + 3px);
+        max-width: unset;
+    }
+
+    .iconItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            background: white;
+            padding: 6px;
+            border-radius: 10px;
+
+            img {
+                width: 34px;
+                height: auto;
+            }
+        }
+
+        h2 {
+            color: @primary;
+            font-weight: 900;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 0px 16px;
+        }
+    }
+
+}
+
+@media (max-width: 800px) {
+    .container {
+        .second {
+            ul {
+                display: grid;
+                grid-template-columns: 50% 50%;
+            }
+        }
+
+        .iconItem {
+            justify-content: flex-start;
+            padding-bottom: 16px;
+        }
+    }
+}
+@media (max-width: 490px) {
+    .container {
+        padding: 0px;
+        h1{
+            font-size: 75px;
+            line-height: 75px;
+            margin: 30px auto 40px;
+        }
+        .second {
+            ul {
+                padding: 0;
+            }
+        }
+        .iconItem {
+            justify-content: flex-start;
+            div{
+                padding: 4px;
+                img{
+                    width: 24px;
+                }
+            }
+            h2{
+                font-size: 14px;
+            }
+        }
+    }
+}

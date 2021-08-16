@@ -1,0 +1,46 @@
+.container {
+    margin: 0 25px 0 25px;
+    .content {
+      position: relative;
+      background-color: white;
+      border-radius: 5px;
+      padding: 10px 15px 18px 15px;
+      img {
+        width: 10px;
+        position: absolute;
+        bottom: 9px;
+        right: 9px;
+      }
+    }
+  
+    .content::after {
+      content: "";
+      display: block;
+      border: 9px solid transparent;
+      width: 0px;
+      height: 0px;
+      border-top: 9px solid white;
+      position: absolute;
+      bottom: -18px;
+      left: 22.5px;
+    }
+  
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 15px 0 0 6px;
+  
+      .picture {
+        width: 55px;
+        height: 55px;
+        border-radius: 100%;
+        background-color: rgb(20, 20, 20);
+      }
+      .author {
+        margin-left: 15px;
+        color: black;
+      }
+    }
+  }

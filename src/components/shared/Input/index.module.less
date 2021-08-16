@@ -1,0 +1,138 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+  margin-bottom: 0px;
+
+  font-size: 19px;
+
+  >* {
+    width: 100%;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    margin-left: 5px;
+  }
+
+  input{
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 100px;
+    text-align: center !important;
+    font-size: 15px;
+    //padding-right: 10px;
+  }
+
+  select {
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 100px;
+    text-align: center !important;
+    font-size: 15px;
+    //padding-right: 10px;
+
+    appearance: none;
+    text-align-last:center;
+    cursor: pointer;
+  }
+
+  textarea {
+    background: white;
+    border: none;
+    resize: none;
+    border-radius: 100px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  input[type="file"] {
+      appearance: none;
+      background-color: white;
+      cursor: default;
+      align-items: baseline;
+      color: inherit;
+      text-overflow: ellipsis;
+      white-space: pre;
+      text-align: center;
+      padding: 0;
+      border: none;
+      margin: 0;
+  }
+
+  input:focus, textarea:focus, select:focus{
+      outline: none;
+  }
+
+  .imageFile{ 
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+  }
+
+  .fileLabel {
+    margin: auto;
+    width: calc(100% - 40px);
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(40deg, #ff6ec4, #7873f5);
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+    position: absolute;
+    bottom: 22px;
+  }
+}
+
+.checkbox {
+  font-weight: bold;
+  min-height: 27px;
+  input {
+    height: auto;
+  }
+
+  p {
+    margin: 0;
+    span{
+      font-size: 17px;
+      line-height: 17px;
+      margin-left: 6px;
+    }
+  }
+
+  .noerror{
+    display: none;
+  }
+}
+
+.checkbox .checkbox .checkbox {
+  min-height: 25px;
+}
+
+.error,
+.noerror {
+  margin: 0px !important;
+  padding-left: 5px;
+  color: #ff5656;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.noerror {
+  color: transparent !important;
+}
