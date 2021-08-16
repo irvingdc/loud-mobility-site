@@ -45,7 +45,74 @@ collections:
               widget: "hidden",
               default: "index-page",
             }
-          - { label: Title, name: title, widget: string }
+          - { label: Title, name: title, widget: "markdown" }
+          - {
+              label: "Top Icons",
+              name: topIcons,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "Icon 1",
+                    name: icon1,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Label, name: label, widget: string },
+                      ],
+                  },
+                  {
+                    label: "Icon 2",
+                    name: icon2,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Label, name: label, widget: string },
+                      ],
+                  },
+                  {
+                    label: "Icon 3",
+                    name: icon3,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Label, name: label, widget: string },
+                      ],
+                  },
+                  {
+                    label: "Icon 4",
+                    name: icon4,
+                    widget: object,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Label, name: label, widget: string },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Partners,
+              name: partners,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  {
+                    label: Items,
+                    name: items,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                ],
+            }
       - file: "src/pages/example.md"
         label: "Example Page"
         name: "example"

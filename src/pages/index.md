@@ -14,19 +14,7 @@ topIcons:
   icon4:
     image: /img/home.svg
     label: Delivery
-topicons:
-  icon1:
-    image: /img/booking.svg
-    label: Booking
-  icon2:
-    image: /img/home.svg
-    label: Collection
-  icon3:
-    image: /img/service.svg
-    label: Service
-  icon4:
-    image: /img/home.svg
-    label: Delivery
+
 partners:
   heading: Partners
   items:
@@ -36,4 +24,3 @@ partners:
       alt: London Bike Kitchen
     - image: /img/cie.png
       alt: Cicling Industries Europe
----

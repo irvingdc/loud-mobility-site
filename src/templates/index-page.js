@@ -12,11 +12,12 @@ import Meta from "components/shared/Meta";
 
 export const IndexPageTemplate = ({
   title,
+  topIcons
 }) => (
   <>
     <Nav />
     <Meta url="/" />
-    <Intro title={title}/>
+    <Intro title={title} topIcons={topIcons}/>
     <BookingCards />
     <BookingForm />
     <QuotesBlock />
@@ -25,9 +26,20 @@ export const IndexPageTemplate = ({
   </>
 )
 
+const IconType = PropTypes.shape({
+  label: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+})
+
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
+  topIcons: PropTypes.shape({
+    icon1: IconType,
+    icon2: IconType,
+    icon3: IconType,
+    icon4: IconType,
+  }),
 }
 
 const IndexPage = ({ data }) => {
@@ -35,6 +47,7 @@ const IndexPage = ({ data }) => {
   return (
     <IndexPageTemplate
       title={frontmatter.title}
+      topIcons={frontmatter.topIcons}
     />
   )
 }
@@ -54,6 +67,32 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
+        topIcons { 
+          icon1 {
+            image{
+              publicURL
+            }
+            label
+          }
+          icon2 {
+            image{
+              publicURL
+            }
+            label
+          }
+          icon3 {
+            image{
+              publicURL
+            }
+            label
+          }
+          icon4 {
+            image{
+              publicURL
+            }
+            label
+          }
+        }
       }
     }
   }
