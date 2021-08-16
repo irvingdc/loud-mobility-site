@@ -22,7 +22,6 @@ packages:
     bullets:
       - Single service for a single bike
       - Get a fair quote from a trusted partner
-      - Hassle free fixes and maintenance
   package2:
     name: RIDER
     price: "14.99"
