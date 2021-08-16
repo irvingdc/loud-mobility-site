@@ -2,12 +2,14 @@ import React from "react"
 import * as classes from "./index.module.less"
 import checkp from "images/checkp.svg"
 import checkw from "images/checkw.svg"
+import { Link } from "gatsby"
 
 export default ({ label,
     extra,
     price,
     dark,
     list,
+    link,
     onBook }) => {
     return <div
         className={[classes.container, dark ? classes.dark : ""].join(" ")}
@@ -28,7 +30,7 @@ export default ({ label,
                 </li>
             ))}
         </ul>
-        <p className={classes.learnMore}>Learn more...</p>
+        <Link className={classes.learnMore} to={link}>Learn more...</Link>
         <button onClick={() => !!onBook && onBook(label)}>
             Book Now
         </button>
