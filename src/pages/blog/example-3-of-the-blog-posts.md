@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: "Example #3 of the blog posts :)"
+title: "Example #3 of the blog posts (name changed)"
 date: 2021-08-17T23:37:06.631Z
 description: >
   We expect the shipment of a limited quantity of green beans next Monday. We’ll
