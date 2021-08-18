@@ -15,6 +15,7 @@ export default () => {
                     <Link to="/#services">Services</Link>
                 </li>
                 <li><Link to="/#booking">Booking</Link></li>
+                <li><Link to="/#blog">Blog</Link></li>
             </ul>
         </nav>
     </Layout>

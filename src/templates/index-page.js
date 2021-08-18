@@ -5,6 +5,7 @@ import Nav from "components/shared/Nav";
 import Intro from "components/index/Intro";
 import BookingCards from "components/index/BookingCards";
 import BookingForm from "components/index/BookingForm";
+import BlogRoll from "components/blog/BlogRoll";
 import QuotesBlock from "components/index/QuotesBlock";
 import Partners from "components/index/Partners";
 import Footer from "components/shared/Footer";
@@ -23,6 +24,7 @@ export const IndexPageTemplate = ({
     <Intro title={title} topIcons={topIcons}/>
     <BookingCards packages={packages}/>
     <BookingForm />
+    <BlogRoll />
     <QuotesBlock testimonials={testimonials}/>
     <Partners partners={partners}/>
     <Footer />
