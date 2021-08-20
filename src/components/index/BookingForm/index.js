@@ -7,6 +7,19 @@ import ImageInput from "components/shared/ImageInput"
 import background from "images/O.svg"
 import Autocomplete from "../../shared/Autocomplete/Autocomplete"
 
+const encode = (data) => {
+    const formData = new FormData()
+    Object.keys(data)
+        .map(key => {
+            if (key === 'image') {
+                formData.append(key, data[key], data[key].name)
+            } else {
+                formData.append(key, data[key])
+            }
+        })
+    return formData
+}
+
 export default () => {
     let [values, setValues] = useState({
         newsletter_signup: false,
@@ -54,22 +67,13 @@ export default () => {
         }
 
         setLoading(true);
-
-        console.log("Booking...")
-        setLoading(true)
-
-        let data = {
-            ...values,
-            "form-name": "booking-form",
-        };
-        let formData = new FormData()
-        Object.keys(data).forEach(key => {
-            formData.append(key, data[key])
-        })
         try {
             fetch("/", {
                 method: "POST",
-                body: formData
+                body: encode({
+                    ...values,
+                    "form-name": "booking-form",
+                })
             })
                 .then(() => {
                     window.location.replace("/success")
