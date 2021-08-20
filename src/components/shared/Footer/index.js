@@ -25,7 +25,6 @@ export default () => (
       `}
 
       render={(data, count) =>  <Layout>
-        {console.log("footer_data:",data.allMarkdownRemark.edges[0].node.frontmatter.links)} 
         
         <footer className={classes.footerNav}>
             <ul>
