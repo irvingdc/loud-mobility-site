@@ -76,7 +76,7 @@ export default () => {
                 })
             })
                 .then(() => {
-                    window.location.replace("/success")
+                    //window.location.replace("/success")
                 })
                 .catch(error => {
                     sendErrorMessage()
