@@ -1,8 +1,8 @@
 ---
 templateKey: footer
 links:
-  - label: prueba
-    linkURL: google.com
-  - label: prueba2
-    linkURL: google2.com
+  - label: About Us
+    linkURL: https://loud-mobility.netlify.app/
+  - label: Insurance
+    linkURL: https://loud-mobility.netlify.app/
 ---
