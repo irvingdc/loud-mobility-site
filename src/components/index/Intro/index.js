@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import Radio from "../../shared/Radio"
 import * as classes from "./index.module.less"
 import Layout from "components/shared/Layout"
-import { Link } from "gatsby"
 import marked from "marked"
+import { scrollTo } from "src/utils/functions"
 
 const Item = ({ img, label }) =>
     <li className={classes.iconItem}>
@@ -21,6 +21,7 @@ export default ({ title, topIcons }) => {
 
     let handleChange = item => {
         setService(item.value)
+        scrollTo(item.value)
     }
 
     return <div className={classes.container}>
@@ -31,8 +32,8 @@ export default ({ title, topIcons }) => {
                 <Radio
                     selectedValue={service}
                     onChange={handleChange}
-                    optionA={{ value: "services", label: <Link to="#services">Choose Service</Link> }}
-                    optionB={{ value: "booking", label: <Link to="#booking">Book Now</Link> }}
+                    optionA={{ value: "services", label: "Choose Service" }}
+                    optionB={{ value: "booking", label: "Book Now" }}
                 />
             </div>
         </div>

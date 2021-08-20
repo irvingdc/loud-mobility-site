@@ -24,7 +24,7 @@ export default ({
   formOnChange }) => {
 
   const messagestList = {
-    "input_prompt": "Enter at least three charcaters to get suggestions.",
+    "input_prompt": "Enter at least three characters to get suggestions.",
     "no_suggestions": "No suggestions found."
   }
 

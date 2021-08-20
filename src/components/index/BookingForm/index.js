@@ -20,17 +20,11 @@ const encode = (data) => {
     return formData
 }
 
-export default () => {
+export default ({ service, setService }) => {
     let [values, setValues] = useState({
         newsletter_signup: false,
         terms_and_conditions: true,
         pickuptime: "9:00-12:00",
-        name: "irving",
-        email: "irving@gmail.com",
-        number_bikes: "1",
-        service: "solo",
-        phone_number: "12344",
-        address: "home"
     });
 
     let [loading, setLoading] = useState(false);
@@ -41,6 +35,10 @@ export default () => {
         setValues({ ...values, [name]: value });
     };
 
+    let handleServiceChange = (value, name) => {
+        setService(value)
+    }
+
     let handleRadioChange = item => {
         handleChange(item.value, "pickuptime")
     }
@@ -50,7 +48,7 @@ export default () => {
         setValidateNow(true);
         if (
             loading ||
-            !values.service ||
+            !service ||
             !values.name ||
             !values.email ||
             !values.phone_number ||
@@ -67,11 +65,12 @@ export default () => {
                 method: "POST",
                 body: encode({
                     ...values,
+                    service,
                     "form-name": "booking-form",
                 })
             })
                 .then(() => {
-                    //window.location.replace("/success")
+                    typeof window !== "undefined" && window.location.replace("/success")
                 })
                 .catch(error => {
                     sendErrorMessage()
@@ -113,9 +112,9 @@ export default () => {
                 <div className={classes.smallInputContainer}>
                     <Input
                         placeholder="CHOOSE YOUR SERVICE"
-                        onChange={handleChange}
+                        onChange={handleServiceChange}
                         label="Service"
-                        value={values["service"] == undefined ? '' : values["service"]}
+                        value={service == undefined ? '' : service}
                         name="service"
                         type="select"
                         options={['SOLO', 'RIDER', 'TEAM']}
