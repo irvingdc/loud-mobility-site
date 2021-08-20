@@ -1,8 +1,10 @@
 .container {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    padding-bottom: 100px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-bottom: 125px;
+
     h3 {
         font-size: 80px;
         text-align: center;
@@ -54,6 +56,12 @@
             width: 100%;
             padding: 0 20px 0 20px;
         }
+        
+        .postCodeContainer{
+            width: 50%;
+            padding: 0 20px 0 20px;
+            z-index: 50;
+        }
 
         >button {
             position: relative;
@@ -95,6 +103,13 @@
         form {
             .smallInputContainer {
                 width: 100%;
+            }
+
+            .postCodeContainer{
+                width: 100%;
+                padding: 0 20px 0 20px;
+                z-index: 50;
+                margin-bottom: 20px;
             }
 
             .spaceHolder {
