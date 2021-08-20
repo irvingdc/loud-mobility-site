@@ -60,7 +60,7 @@ export default () => {
 
         let data = {
             ...values,
-            form: "booking-form",
+            "form-name": "booking-form",
         };
         try {
             fetch("/", {
@@ -95,10 +95,8 @@ export default () => {
                 name="booking-form"
                 data-netlify="true"
                 method="post"
-                action="/success"
-                netlify-honeypot="bot-field"
+                action="/"
             >
-                <input type="hidden" name="bot-field" />
                 <input type="hidden" name="form-name" value="booking-form" />
                 <input type="hidden" name="address" value="" />
                 <input type="hidden" name="email" value="" />
