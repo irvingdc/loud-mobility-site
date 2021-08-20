@@ -5,6 +5,7 @@ import Input from "components/shared/Input"
 import Radio from "components/shared/Radio"
 import ImageInput from "components/shared/ImageInput"
 import background from "images/O.svg"
+import Autocomplete from "../../shared/Autocomplete/Autocomplete"
 
 export default () => {
     let [values, setValues] = useState({
@@ -17,10 +18,6 @@ export default () => {
     let [sent, setSent] = useState(false);
     let [validateNow, setValidateNow] = useState(false);
 
-    let terminate = () => {
-        setSent(true);
-    };
-
     let handleChange = (value, name) => {
         setValidateNow(false);
         setValues({ ...values, [name]: value });
@@ -30,81 +27,99 @@ export default () => {
         handleChange(item.value, "pickuptime")
     }
 
+    let encode = data => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&")
+    }
+
     let sendData = async (e) => {
         e.preventDefault();
         setValidateNow(true);
+        console.log("values", values)
 
-        /* if (
+        // TODO: define the list of required fields. 
+        // Right now all but the newsletter_signup and the image fiels are required.
+        if (
             loading ||
+            !values.service ||
             !values.name ||
             !values.email ||
-            !values.message ||
-            !values.company_name ||
-            !values.company_size
+            !values.phone_number ||
+            !values.number_bikes ||
+            !values.address ||
+            !values.terms_and_conditions
         ) {
             return false;
         }
 
-        setLoading(true); */
+        setLoading(true);
 
-        /* let data = {
+        console.log("Booking...")
+        setLoading(true)
+
+        let data = {
             ...values,
-            form: "contactForm",
-        }; */
-        /* fetch(`/website/leads/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.message === "success") {
-                    setLoading(false);
-                    terminate();
-                } else throw data;
+            form: "booking-form",
+        };
+        try {
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode(data),
             })
-            .catch((error) => {
-                console.error("Error:", error);
-                setLoading(false);
-                alert(
-                    "An error happened, please send us an email to info@loudmobility.com"
-                );
-            }); */
+                .then(() => {
+                    window.location.replace("/success")
+                })
+                .catch(error => {
+                    sendErrorMessage()
+                })
+        } catch (error) {
+            sendErrorMessage()
+        }
     };
+
+    let sendErrorMessage = () => {
+        setLoading(false)
+        alert(
+            "An error happened, please send us an email to info@loudmobility.com"
+        );
+    }
 
     return <div className={classes.container} id="booking">
         <h3>Revive Your Ride </h3>
 
         <Layout>
-            <form onSubmit={e => e.preventDefault()}>
+            <form
+                onSubmit={e => e.preventDefault()}
+                name="booking-form"
+                data-netlify="true"
+                method="post"
+                action="/success"
+                netlify-honeypot="bot-field"
+            >
+                <input type="hidden" name="bot-field" />
+                <input type="hidden" name="form-name" value="booking-form" />
+                <input type="hidden" name="address" value="" />
+                <input type="hidden" name="email" value="" />
+                <input type="hidden" name="image" value="" />
+                <input type="hidden" name="name" value="" />
+                <input type="hidden" name="newsletter_signup" value="" />
+                <input type="hidden" name="number_bikes" value="" />
+                <input type="hidden" name="phone_number" value="" />
+                <input type="hidden" name="pickuptime" value="" />
+                <input type="hidden" name="service" value="" />
+                <input type="hidden" name="terms_and_conditions" value="" />
                 <div className={classes.smallInputContainer}>
                     <Input
                         placeholder="CHOOSE YOUR SERVICE"
                         onChange={handleChange}
                         label="Service"
-                        value={values["services"] == undefined ? '' : values["services"]}
-                        name="services"
+                        value={values["service"] == undefined ? '' : values["service"]}
+                        name="service"
                         type="select"
                         options={['SOLO', 'RIDER', 'TEAM']}
-                        disabled={loading || sent}
-                        required
-                        validateNow={validateNow}
-                    />
-                </div>
-
-                <div className={classes.smallInputContainer}></div>
-
-                <div className={classes.smallInputContainer}>
-                    <Input
-                        placeholder="XX"
-                        onChange={handleChange}
-                        label="Number of bikes"
-                        value={values["number_bikes"]}
-                        name="number_bikes"
-                        type="number"
-                        disabled={loading || sent}
+                        disabled={loading}
                         required
                         validateNow={validateNow}
                     />
@@ -112,13 +127,13 @@ export default () => {
 
                 <div className={classes.smallInputContainer}>
                     <Input
-                        placeholder="XX"
+                        placeholder=""
                         onChange={handleChange}
                         label="Name"
                         value={values["name"]}
                         name="name"
                         type="text"
-                        disabled={loading || sent}
+                        disabled={loading}
                         required
                         validateNow={validateNow}
                     />
@@ -126,32 +141,62 @@ export default () => {
 
                 <div className={classes.smallInputContainer}>
                     <Input
-                        placeholder="XX"
+                        placeholder=""
                         onChange={handleChange}
                         label="Email"
                         value={values["email"]}
                         name="email"
                         type="email"
-                        disabled={loading || sent}
+                        disabled={loading}
                         required
                         validateNow={validateNow}
                     />
                 </div>
+
                 <div className={classes.smallInputContainer}>
                     <Input
-                        placeholder="ENTER POSTCODE TO SEARCH"
+                        placeholder=""
                         onChange={handleChange}
+                        label="Phone Number"
+                        value={values["phone_number"]}
+                        name="phone_number"
+                        type="number"
+                        disabled={loading}
+                        required
+                        validateNow={validateNow}
+                    />
+                </div>
+
+                <div className={classes.smallInputContainer}>
+                    <Input
+                        placeholder=""
+                        onChange={handleChange}
+                        label="Number of bikes"
+                        value={values["number_bikes"]}
+                        name="number_bikes"
+                        type="number"
+                        disabled={loading}
+                        required
+                        validateNow={validateNow}
+                    />
+                </div>
+
+                <div className={classes.postCodeContainer}>
+                    <Autocomplete
+                        placeholder="ENTER POSTCODE TO SEARCH"
+                        formOnChange={handleChange}
                         label="Pick up and Drop off address*"
                         value={values["address"]}
                         name="address"
-                        type="text"
-                        disabled={loading || sent}
-                        required
+                        required={true}
                         validateNow={validateNow}
+                        disabled={loading}
                     />
                 </div>
+
                 <div className={classes.smallInputContainer}>
                     <span className={classes.label}>Pick Up Time</span>
+                    {/* TODO: use disabled on the Radio component */}
                     <Radio
                         optionA={{
                             label: "9:00-12:00",
@@ -166,13 +211,14 @@ export default () => {
                 </div>
 
                 <div className={classes.smallInputContainer}>
+                    {/* TODO: use disabled on the ImageInput component */}
                     <ImageInput
                         onChange={handleChange}
                         label={values["image"] == undefined ? "IMAGE" : values["image"]}
                         value={values["image"]}
                         name="image"
                         type="image"
-                        disabled={loading || sent}
+                        disabled={loading}
                         required={false}
                         validateNow={validateNow}
                     />
@@ -182,11 +228,12 @@ export default () => {
                 <div className={classes.largeInputContainer}>
                     <Input
                         onChange={handleChange}
-                        label={"I've read and understand the Terms & conditions."}
+                        // TODO: add Terms & Conditions page
+                        label={"I've read and understand the Terms & Conditions."}
                         value={values["terms_and_conditions"]}
                         name="terms_and_conditions"
                         type="checkbox"
-                        disabled={loading || sent}
+                        disabled={loading}
                         required
                         validateNow={validateNow}
                     />
@@ -199,15 +246,15 @@ export default () => {
                         value={values["newsletter_signup"]}
                         name="newsletter_signup"
                         type="checkbox"
-                        disabled={loading || sent}
+                        disabled={loading}
                         required={false}
                         validateNow={validateNow}
                     />
                 </div>
 
-                <button onClick={sendData}>
-                    Book Now
-                </button>
+                {sent ? <p className={classes.success}>Information Sent!</p> : <button onClick={sendData}>
+                    {loading ? "Sending..." : "Book Now"}
+                </button>}
             </form>
 
         </Layout>

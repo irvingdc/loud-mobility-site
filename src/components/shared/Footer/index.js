@@ -11,7 +11,7 @@ export default () => {
                 <li><Link to="/#team">Meet the team</Link></li>
                 <li><Link to="/#terms">Terms and Condition</Link></li>
                 <li><Link to="/#insurance">Insurance</Link></li>
-                <li><Link to="mailto:info@loudmobility.com">Contact Us</Link></li>
+                <li><a target="_blank" href="mailto:info@loudmobility.com">Contact Us</a></li>
             </ul>
         </footer>
 

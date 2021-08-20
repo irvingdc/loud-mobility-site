@@ -1,0 +1,148 @@
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+  margin-bottom: 0px;
+
+  font-size: 19px;
+
+  z-index: 100;
+
+  >* {
+    width: 100%;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    margin-left: 5px;
+  }
+
+  input{
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 100px;
+    text-align: center !important;
+    font-size: 15px;
+    padding: 0 35px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    /*padding-right: 10px;*/
+  }
+
+  input:focus, textarea:focus, select:focus{
+      outline: none;
+  }
+
+  .suggestionsList{
+    transition: all 0s 0.1s;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 25px;
+    position: absolute;
+    top: 86px;
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    //max-height: 250px;
+    //overflow-y: scroll;
+    padding-left: 0;
+    background-color: white;
+    z-index: 100;
+    //width: calc(300px + 1rem);
+  }
+
+  input:focus + .suggestionsList{
+    transition: all 0s 0s;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .suggestionsList:nth-child(2){
+    background-color: red;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+
+  .noSuggestion{
+    position: relative;
+    top: 70px;
+
+  }
+
+  .suggestion{
+    cursor: pointer;
+    padding: 5px 15px;
+  }
+  
+  .activeSuggestion{
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: #bdbdbd;
+  }
+
+  .suggestion:hover{
+    background-color: #efefef;
+  }
+
+  .closeIcon{
+    width: 17px;
+    position: absolute;
+    top: 51px;
+    right: 15px;
+    opacity: 0.6;
+  }
+  .closeIcon:hover{
+    cursor: pointer;
+  }
+
+  .spinnerContainer{
+    height: 120px;
+    border-radius: 25px;
+    position: absolute;
+    top: 86px;
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 250px;
+    padding-left: 0;
+    background-color: white;
+    z-index: 100;
+    //width: calc(300px + 1rem);
+  }
+
+}
+
+.error,
+.noerror {
+  margin: 0px !important;
+  padding-left: 5px;
+  color: #ff5656;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.message,
+.nomessage{
+  margin: 0px !important;
+  padding-left: 5px;
+  color: #484848;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.nomessage {
+  color: transparent !important;
+}
+.noerror {
+  color: transparent !important;
+}
