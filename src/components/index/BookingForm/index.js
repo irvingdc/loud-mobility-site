@@ -67,7 +67,7 @@ export default () => {
             formData.append(key, data[key])
         })
         try {
-           /* fetch("/", {
+            fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "multipart/form-data" },
                 body: new URLSearchParams(formData).toString()
@@ -77,7 +77,7 @@ export default () => {
                 })
                 .catch(error => {
                     sendErrorMessage()
-                })*/
+                })
         } catch (error) {
             sendErrorMessage()
         }
