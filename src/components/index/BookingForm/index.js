@@ -11,7 +11,7 @@ const encode = (data) => {
     const formData = new FormData()
     Object.keys(data)
         .map(key => {
-            if (key === 'image') {
+            if (key === 'file') {
                 formData.append(key, data[key], data[key].name)
             } else {
                 formData.append(key, data[key])
@@ -48,11 +48,6 @@ export default () => {
     let sendData = async (e) => {
         e.preventDefault();
         setValidateNow(true);
-        console.log("values", values)
-        console.log("values.image", values.image)
-
-        // TODO: define the list of required fields. 
-        // Right now all but the newsletter_signup and the image fiels are required.
         if (
             loading ||
             !values.service ||
@@ -107,7 +102,7 @@ export default () => {
                 <input type="hidden" name="form-name" value="booking-form" />
                 <input type="hidden" name="address" value="" />
                 <input type="hidden" name="email" value="" />
-                <input type="hidden" name="image" value="" />
+                <input type="hidden" name="file" value="" />
                 <input type="hidden" name="name" value="" />
                 <input type="hidden" name="newsletter_signup" value="" />
                 <input type="hidden" name="number_bikes" value="" />
@@ -219,11 +214,8 @@ export default () => {
                     {/* TODO: use disabled on the ImageInput component */}
                     <ImageInput
                         onChange={handleChange}
-                        name="image"
-                        type="image"
+                        name="file"
                         disabled={loading}
-                        required={false}
-                        validateNow={validateNow}
                     />
                 </div>
                 <div className={classes.spaceHolder}></div>

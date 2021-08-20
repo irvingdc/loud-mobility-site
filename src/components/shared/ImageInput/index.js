@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { validateEmail } from "../../../utils/functions";
 import * as classes from "./index.module.less";
 import clip from "images/attach.svg"
 
@@ -12,10 +11,10 @@ export default ({
   let [label, setLabel] = useState()
 
   let handleFileChange = e => {
-    const file = e.target.files?.length && Array.from(e.target.files)[0];
+    const file = e.target.files?.length && e.target.files[0];
     if (file) {
       setLabel(file.name)
-      onChange(file, "image")
+      onChange(file, name)
     } else {
       onChange(null, name)
       setLabel("")
@@ -41,7 +40,7 @@ export default ({
         className={classes.imageFile}
         type="file"
         name={name}
-        accept="image/png, image/jpeg"
+        accept="image/*"
         onChange={handleFileChange}
         disabled={disabled}
       />
