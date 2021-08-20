@@ -7,15 +7,27 @@ import ImageInput from "components/shared/ImageInput"
 import background from "images/O.svg"
 import Autocomplete from "../../shared/Autocomplete/Autocomplete"
 
-export default () => {
+const encode = (data) => {
+    const formData = new FormData()
+    Object.keys(data)
+        .map(key => {
+            if (key === 'file') {
+                formData.append(key, data[key], data[key].name)
+            } else {
+                formData.append(key, data[key])
+            }
+        })
+    return formData
+}
+
+export default ({ service, setService }) => {
     let [values, setValues] = useState({
         newsletter_signup: false,
         terms_and_conditions: true,
-        pickuptime: "9:00-12:00"
+        pickuptime: "9:00-12:00",
     });
 
     let [loading, setLoading] = useState(false);
-    let [sent, setSent] = useState(false);
     let [validateNow, setValidateNow] = useState(false);
 
     let handleChange = (value, name) => {
@@ -23,26 +35,20 @@ export default () => {
         setValues({ ...values, [name]: value });
     };
 
-    let handleRadioChange = item => {
-        handleChange(item.value, "pickuptime")
+    let handleServiceChange = (value, name) => {
+        setService(value)
     }
 
-    let encode = data => {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&")
+    let handleRadioChange = item => {
+        handleChange(item.value, "pickuptime")
     }
 
     let sendData = async (e) => {
         e.preventDefault();
         setValidateNow(true);
-        console.log("values", values)
-
-        // TODO: define the list of required fields. 
-        // Right now all but the newsletter_signup and the image fiels are required.
         if (
             loading ||
-            !values.service ||
+            !service ||
             !values.name ||
             !values.email ||
             !values.phone_number ||
@@ -54,22 +60,17 @@ export default () => {
         }
 
         setLoading(true);
-
-        console.log("Booking...")
-        setLoading(true)
-
-        let data = {
-            ...values,
-            "form-name": "booking-form",
-        };
         try {
             fetch("/", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: encode(data),
+                body: encode({
+                    ...values,
+                    service,
+                    "form-name": "booking-form",
+                })
             })
                 .then(() => {
-                    window.location.replace("/success")
+                    typeof window !== "undefined" && window.location.replace("/success")
                 })
                 .catch(error => {
                     sendErrorMessage()
@@ -100,7 +101,7 @@ export default () => {
                 <input type="hidden" name="form-name" value="booking-form" />
                 <input type="hidden" name="address" value="" />
                 <input type="hidden" name="email" value="" />
-                <input type="hidden" name="image" value="" />
+                <input type="hidden" name="file" value="" />
                 <input type="hidden" name="name" value="" />
                 <input type="hidden" name="newsletter_signup" value="" />
                 <input type="hidden" name="number_bikes" value="" />
@@ -111,9 +112,9 @@ export default () => {
                 <div className={classes.smallInputContainer}>
                     <Input
                         placeholder="CHOOSE YOUR SERVICE"
-                        onChange={handleChange}
+                        onChange={handleServiceChange}
                         label="Service"
-                        value={values["service"] == undefined ? '' : values["service"]}
+                        value={service == undefined ? '' : service}
                         name="service"
                         type="select"
                         options={['SOLO', 'RIDER', 'TEAM']}
@@ -212,13 +213,8 @@ export default () => {
                     {/* TODO: use disabled on the ImageInput component */}
                     <ImageInput
                         onChange={handleChange}
-                        label={values["image"] == undefined ? "IMAGE" : values["image"]}
-                        value={values["image"]}
-                        name="image"
-                        type="image"
+                        name="file"
                         disabled={loading}
-                        required={false}
-                        validateNow={validateNow}
                     />
                 </div>
                 <div className={classes.spaceHolder}></div>
@@ -250,9 +246,9 @@ export default () => {
                     />
                 </div>
 
-                {sent ? <p className={classes.success}>Information Sent!</p> : <button onClick={sendData}>
+                <button onClick={sendData}>
                     {loading ? "Sending..." : "Book Now"}
-                </button>}
+                </button>
             </form>
 
         </Layout>

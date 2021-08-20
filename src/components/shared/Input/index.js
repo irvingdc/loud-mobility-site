@@ -11,9 +11,9 @@ let validateField = (type, value, validateNow, required) => {
       : "Please enter a valid email.";
   } else {
     // return required && !!value ? null : "Required.";
-    if(required){
+    if (required) {
       return !!value ? null : "Required."
-    }else{
+    } else {
       return null
     }
   }
@@ -39,8 +39,8 @@ export default ({
         type === "checkbox" ? classes.checkbox : "",
       ].join(" ")}
     >
-      {type !== "checkbox" ? 
-        <label 
+      {type !== "checkbox" ?
+        <label
           htmlFor={name}>{label}
         </label> : null}
       {type === "textarea" ? (
@@ -53,6 +53,7 @@ export default ({
         ></textarea>
       ) : type === "select" ? (
         <select
+          value={value}
           onChange={(e) => onChange(e.target.value, name)}
           disabled={disabled}
         >
