@@ -6,24 +6,18 @@ import clip from "images/attach.svg"
 export default ({
   onChange,
   name,
-  type,
   disabled,
-  required,
-  validateNow,
 }) => {
 
   let [label, setLabel] = useState()
 
   let handleFileChange = e => {
-    console.log("file_array", e.target.files)
     const file = e.target.files?.length && Array.from(e.target.files)[0];
     if (file) {
-      console.log("file_value", file)
-      const { name } = file;
-      console.log("file_name", name);
-      setLabel(name)
-      onChange(file, name)
+      setLabel(file.name)
+      onChange(file, "image")
     } else {
+      onChange(null, name)
       setLabel("")
     }
   }
