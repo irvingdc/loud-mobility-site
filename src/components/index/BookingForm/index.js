@@ -69,7 +69,6 @@ export default () => {
         try {
             fetch("/", {
                 method: "POST",
-                headers: { "Content-Type": "multipart/form-data" },
                 body: formData
             })
                 .then(() => {
