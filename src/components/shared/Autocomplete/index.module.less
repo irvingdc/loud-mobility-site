@@ -21,7 +21,7 @@
     margin-left: 5px;
   }
 
-  input{
+  input {
     height: 50px;
     background: white;
     border: none;
@@ -35,74 +35,75 @@
     /*padding-right: 10px;*/
   }
 
-  input:focus, textarea:focus, select:focus{
-      outline: none;
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
   }
 
-  .suggestionsList{
+  .suggestionsList {
     transition: all 0s 0.1s;
     opacity: 0;
     visibility: hidden;
     border-radius: 25px;
     position: absolute;
+    overflow: auto;
+    max-height: 350px;
     top: 86px;
     border: 1px solid #999;
     border-top-width: 0;
     list-style: none;
     margin-top: 0;
-    //max-height: 250px;
-    //overflow-y: scroll;
     padding-left: 0;
     background-color: white;
+    border-radius: 25px;
     z-index: 100;
-    //width: calc(300px + 1rem);
   }
 
-  input:focus + .suggestionsList{
+  input:focus+.suggestionsList {
     transition: all 0s 0s;
     opacity: 1;
     visibility: visible;
   }
 
-  .suggestionsList:nth-child(2){
+  .suggestionsList:nth-child(2) {
     background-color: red;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
   }
 
-  .noSuggestion{
+  .noSuggestion {
     position: relative;
     top: 70px;
 
   }
 
-  .suggestion{
+  .suggestion {
     cursor: pointer;
     padding: 5px 15px;
-  }
-  
-  .activeSuggestion{
-    cursor: pointer;
-    padding: 5px 15px;
-    background-color: #bdbdbd;
   }
 
-  .suggestion:hover{
+  .activeSuggestion {
+    cursor: pointer;
+    padding: 5px 15px;
+    background-color: gainsboro;
+  }
+
+  .suggestion:hover {
     background-color: #efefef;
   }
 
-  .closeIcon{
+  .closeIcon {
     width: 17px;
     position: absolute;
     top: 51px;
     right: 15px;
     opacity: 0.6;
   }
-  .closeIcon:hover{
+
+  .closeIcon:hover {
     cursor: pointer;
   }
 
-  .spinnerContainer{
+  .spinnerContainer {
     height: 120px;
     border-radius: 25px;
     position: absolute;
@@ -131,7 +132,7 @@
 }
 
 .message,
-.nomessage{
+.nomessage {
   margin: 0px !important;
   padding-left: 5px;
   color: #484848;
@@ -143,6 +144,7 @@
 .nomessage {
   color: transparent !important;
 }
+
 .noerror {
   color: transparent !important;
 }

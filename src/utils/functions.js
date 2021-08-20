@@ -73,3 +73,11 @@ function getURLParameter(name) {
     ])[1]
   );
 }
+
+export const scrollTo = id => {
+  if (typeof window === "undefined" || typeof document === "undefined") return;
+  window.scroll({
+    top: document.getElementById(id).offsetTop,
+    behavior: 'smooth'
+  });
+}

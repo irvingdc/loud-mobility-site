@@ -3,12 +3,12 @@ import * as classes from "./index.module.less"
 import close_icon from "images/error.png"
 import Spinner from "../Spinner/Spinner";
 
-let validateField = (value, validateNow, required=true) => {
+let validateField = (value, validateNow, required = true) => {
   if (!validateNow) return null;
 
-  if(required){
+  if (required) {
     return !!value ? null : "Required."
-  }else{
+  } else {
     return null
   }
 };
@@ -17,70 +17,68 @@ export default ({
   placeholder,
   label,
   name,
-  value, 
+  value,
   validateNow,
   required,
   disabled,
-  formOnChange}) => {
+  formOnChange }) => {
 
   const messagestList = {
-    "input_prompt":"Enter at least three charcaters to get suggestions.",
-    "no_suggestions":"No suggestions found."
+    "input_prompt": "Enter at least three characters to get suggestions.",
+    "no_suggestions": "No suggestions found."
   }
 
   let [suggestions, setSuggestions] = useState([]);
-  let [userInput, setUserInput] = useState("");
   let [activeSuggestion, setActiveSuggestion] = useState(-1);
   let [showSuggestions, setShowSuggestions] = useState(false);
   let [showSpinner, setShowSpinner] = useState(false);
   const [inputMessage, setInputMessage] = useState(messagestList["input_prompt"]);
 
-  let error = validateField(userInput, validateNow, required);  
+  let error = validateField(value, validateNow, required);
 
   const onChange = e => {
 
-    if(e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13){
+    if (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13) {
       //console.log("Arrow!!");
       return;
     }
-    
-    setUserInput(e.target.value);
+
     formOnChange(e.target.value, "address")
 
     let API_KEY = "ak_ksdk4bsyiEE6rl63vzXtJLk5kXu4E";
     let query = e.target.value;
-    
-    if(query.length>=3){
+
+    if (query.length >= 3) {
       setShowSpinner(true);
       setShowSuggestions(false);
       setTimeout(() => {
         //
       }, 300);
-      
+
       // TODO: move API key to env variables
       fetch(`https://api.ideal-postcodes.co.uk/v1/autocomplete/addresses?api_key=${API_KEY}&query=${query}`, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          mode:'cors',
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: 'cors',
       })
-      .then((response) => response.json())
-      .then((data) => {
+        .then((response) => response.json())
+        .then((data) => {
           setSuggestions(data.result.hits);
           setActiveSuggestion(0);
           setShowSpinner(false);
           setShowSuggestions(true);
           //console.log(data.result.hits);
-      })
-      .catch((error) => {
+        })
+        .catch((error) => {
           console.error("Error:", error);
           //setLoading(false);
           alert(
-              "An error happened, please send us an email to info@loudmobility.com"
+            "An error happened, please send us an email to info@loudmobility.com"
           );
-      });
-    }else{
+        });
+    } else {
       setShowSpinner(false);
       setShowSuggestions(false);
       setInputMessage(messagestList["input_prompt"]);
@@ -90,7 +88,6 @@ export default ({
   const onClick = e => {
     // console.log("CLICK!!");
 
-    setUserInput(e.target.innerText);
     formOnChange(e.target.innerText, "address")
     setShowSuggestions(false);
     setInputMessage(null);
@@ -100,7 +97,6 @@ export default ({
     // User pressed the enter key
     if (e.keyCode === 13) {
       // console.log("ENTER!!!");
-      setUserInput(suggestions[activeSuggestion].suggestion);
       formOnChange(suggestions[activeSuggestion].suggestion, "address");
       setShowSuggestions(false);
       setInputMessage(null);
@@ -122,14 +118,14 @@ export default ({
   };
 
   const clearInput = () => {
-    setUserInput("");
+    formOnChange("", "address");
     setInputMessage(messagestList["input_prompt"]);
     setShowSuggestions(false);
     setSuggestions([]);
     setActiveSuggestion(-1);
   }
 
-  function SuggestionList({showSuggestions, suggestions, activeSuggestion}) {
+  function SuggestionList({ showSuggestions, suggestions, activeSuggestion }) {
     //console.log(suggestions);
     // useEffect(() => {
     //   //console.log("show-sugg:", showSuggestions);
@@ -147,11 +143,11 @@ export default ({
               if (index === activeSuggestion) {
                 isActive = true;
               }
-  
+
               return (
-                <li 
-                  className={isActive?classes.activeSuggestion:classes.suggestion} 
-                  key={item.suggestion} 
+                <li
+                  className={isActive ? classes.activeSuggestion : classes.suggestion}
+                  key={item.suggestion}
                   onClick={onClick}
                 >
                   {item.suggestion}
@@ -163,7 +159,7 @@ export default ({
       } else {
         setInputMessage("No suggestions found");
         return (
-          
+
           // <ul className={classes.suggestionsList}>
           //   <li 
           //     className={classes.suggestion} 
@@ -180,7 +176,7 @@ export default ({
           <></>
         );
       }
-    }else{
+    } else {
       return <></>
     }
   }
@@ -188,32 +184,32 @@ export default ({
   return (
     <>
       <div className={classes.inputContainer}>
-        <label 
+        <label
           htmlFor={"address"}>{label}
         </label>
 
-        {userInput != ""
-          ?<img 
-              className={classes.closeIcon} 
-              src={close_icon} 
-              alt="clear" 
-              onClick={clearInput}
-            />
-          :<></>
+        {value != ""
+          ? <img
+            className={classes.closeIcon}
+            src={close_icon}
+            alt="clear"
+            onClick={clearInput}
+          />
+          : <></>
         }
 
         {showSpinner
-          ?<div className={classes.spinnerContainer}>
-              <Spinner/>
-           </div>
-          :<></>
+          ? <div className={classes.spinnerContainer}>
+            <Spinner />
+          </div>
+          : <></>
         }
 
         {showSpinner
-          ?<div className={classes.spinnerContainer}>
-              <Spinner/>
-           </div>
-          :<></>
+          ? <div className={classes.spinnerContainer}>
+            <Spinner />
+          </div>
+          : <></>
         }
 
         <input
@@ -225,12 +221,12 @@ export default ({
           autoComplete={"off"}
           disabled={disabled}
           onKeyDown={onKeyDown}
-          value={userInput}
+          value={value}
         />
-        
-        <SuggestionList 
-          showSuggestions={showSuggestions} 
-          suggestions={suggestions} 
+
+        <SuggestionList
+          showSuggestions={showSuggestions}
+          suggestions={suggestions}
           activeSuggestion={activeSuggestion}
         />
 
@@ -242,7 +238,7 @@ export default ({
           ) : (
             <p className={classes.nomessage}>---</p>
           )
-        )} 
+        )}
 
       </div>
     </>

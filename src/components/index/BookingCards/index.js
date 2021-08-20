@@ -4,12 +4,13 @@ import background from "images/D.svg"
 import Card from "components/shared/Card"
 import Layout from "components/shared/Layout"
 
-export default ({ packages }) => {
+export default ({ packages, setService }) => {
 
-    let { package1, package2, package3 } = packages
+    let { package1, package2, package3 } = packages
 
     let book = val => {
         console.log("booking selected", val)
+        setService(val)
     }
 
     return <div className={classes.container} id="services">

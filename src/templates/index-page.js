@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Nav from "components/shared/Nav";
@@ -10,6 +10,7 @@ import QuotesBlock from "components/index/QuotesBlock";
 import Partners from "components/index/Partners";
 import Footer from "components/shared/Footer";
 import Meta from "components/shared/Meta";
+import { scrollTo } from "src/utils/functions"
 
 export const IndexPageTemplate = ({
   title,
@@ -17,19 +18,26 @@ export const IndexPageTemplate = ({
   partners,
   testimonials,
   packages
-}) => (
-  <>
+}) => {
+  let [service, setService] = useState(null)
+
+  let handleServiceChange = val => {
+    console.log("handleServiceChange", val)
+    setService(val)
+    scrollTo("booking")
+  }
+  return <>
     <Nav />
     <Meta url="/" />
-    <Intro title={title} topIcons={topIcons}/>
-    <BookingCards packages={packages}/>
-    <BookingForm />
+    <Intro title={title} topIcons={topIcons} />
+    <BookingCards packages={packages} setService={handleServiceChange} />
+    <BookingForm service={service} setService={handleServiceChange} />
     <BlogRoll />
-    <QuotesBlock testimonials={testimonials}/>
-    <Partners partners={partners}/>
+    <QuotesBlock testimonials={testimonials} />
+    <Partners partners={partners} />
     <Footer />
   </>
-)
+}
 
 const IconType = PropTypes.shape({
   label: PropTypes.string,
@@ -50,7 +58,7 @@ IndexPageTemplate.propTypes = {
     icon2: IconType,
     icon3: IconType,
     icon4: IconType,
-  }), 
+  }),
   testimonials: PropTypes.shape({
     heading: PropTypes.string,
     testimonial1: TestimonialType,
