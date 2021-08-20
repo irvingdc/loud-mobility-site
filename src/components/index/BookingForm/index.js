@@ -11,11 +11,16 @@ export default () => {
     let [values, setValues] = useState({
         newsletter_signup: false,
         terms_and_conditions: true,
-        pickuptime: "9:00-12:00"
+        pickuptime: "9:00-12:00",
+        name: "irving",
+        email: "irving@gmail.com",
+        number_bikes: "1",
+        service: "solo",
+        phone_number: "12344",
+        address: "home"
     });
 
     let [loading, setLoading] = useState(false);
-    let [sent, setSent] = useState(false);
     let [validateNow, setValidateNow] = useState(false);
 
     let handleChange = (value, name) => {
@@ -27,16 +32,11 @@ export default () => {
         handleChange(item.value, "pickuptime")
     }
 
-    let encode = data => {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&")
-    }
-
     let sendData = async (e) => {
         e.preventDefault();
         setValidateNow(true);
         console.log("values", values)
+        console.log("values.image", values.image)
 
         // TODO: define the list of required fields. 
         // Right now all but the newsletter_signup and the image fiels are required.
@@ -62,11 +62,15 @@ export default () => {
             ...values,
             "form-name": "booking-form",
         };
+        let formData = new FormData()
+        Object.keys(data).forEach(key => {
+            formData.append(key, data[key])
+        })
         try {
             fetch("/", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: encode(data),
+                headers: { "Content-Type": "multipart/form-data" },
+                body: new URLSearchParams(formData).toString()
             })
                 .then(() => {
                     window.location.replace("/success")
@@ -212,8 +216,6 @@ export default () => {
                     {/* TODO: use disabled on the ImageInput component */}
                     <ImageInput
                         onChange={handleChange}
-                        label={values["image"] == undefined ? "IMAGE" : values["image"]}
-                        value={values["image"]}
                         name="image"
                         type="image"
                         disabled={loading}
@@ -250,9 +252,9 @@ export default () => {
                     />
                 </div>
 
-                {sent ? <p className={classes.success}>Information Sent!</p> : <button onClick={sendData}>
+                <button onClick={sendData}>
                     {loading ? "Sending..." : "Book Now"}
-                </button>}
+                </button>
             </form>
 
         </Layout>

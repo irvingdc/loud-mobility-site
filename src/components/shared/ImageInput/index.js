@@ -1,54 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { validateEmail } from "../../../utils/functions";
 import * as classes from "./index.module.less";
 import clip from "images/attach.svg"
 
-let validateField = (type, value, validateNow, required) => {
-  if (!validateNow) return null;
-  if(required){
-    return !!value ? null : "Required."
-  }else{
-    return null
-  }
-};
-
-let getFileName = (e) => {
-  const [file] = e.target.files;
-  if(file){
-    // Get the file name and size
-    const { name } = file;
-    console.log(name);
-    return name;
-  }else{
-    return undefined;
-  }
-  
-}
-
 export default ({
-  label,
   onChange,
   name,
-  value,
   type,
-  options,
   disabled,
   required,
   validateNow,
 }) => {
-  let error = validateField(type, value, validateNow, required);
+
+  let [label, setLabel] = useState()
+
+  let handleFileChange = e => {
+    console.log("file_array", e.target.files)
+    const file = e.target.files?.length && Array.from(e.target.files)[0];
+    if (file) {
+      console.log("file_value", file)
+      const { name } = file;
+      console.log("file_name", name);
+      setLabel(name)
+      onChange(file, name)
+    } else {
+      setLabel("")
+    }
+  }
+
   return (
     <div
       className={classes.inputContainer}
     >
-      <label 
+      <label
         className={classes.fileLabel}
         htmlFor={name}
       >
-          <span>
-              <img src={clip} alt="attach" />
-          </span>
-          {label}
+        <span>
+          <img src={clip} alt="attach" />
+        </span>
+        {label || "IMAGE"}
       </label>
 
       <input
@@ -57,14 +48,9 @@ export default ({
         type="file"
         name={name}
         accept="image/png, image/jpeg"
-        onChange={(e) => onChange(getFileName(e), name)}
+        onChange={handleFileChange}
         disabled={disabled}
       />
-      {error ? (
-        <p className={classes.error}>{error}</p>
-      ) : (
-        <p className={classes.noerror}>correct</p>
-      )}
     </div>
   );
 };
