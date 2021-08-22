@@ -35,6 +35,27 @@ collections:
 
     label: "Pages"
     files:
+      - file: "src/pages/success.md"
+        label: "Success"
+        name: "success"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "success-page",
+            }
+          - { label: Content, name: content, widget: "markdown" }
+          - {
+              label: "Icon",
+              name: icon,
+              widget: object,
+              fields:
+                [
+                  { label: Image, name: image, widget: image },
+                  { label: Alt, name: alt, widget: string },
+                ],
+            }
       - file: "src/pages/index.md"
         label: "Index"
         name: "index"
@@ -230,21 +251,22 @@ collections:
   - name: "navbarAndFooter"
     label: "Navbar & Footer"
     files:
-      - file: "src/pages/nav/index.md"
-        label: "NavBar"
-        name: "nav"
-        fields:
-          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "nav" }
-          - {
-              label: "Links",
-              name: "links",
-              widget: "list",
-              fields:
-                [
-                  { label: "Label", name: "label", widget: "string" },
-                  { label: "Link URL", name: "linkURL", widget: "string" },
-                ],
-            }
+      # - file: "src/pages/navbar/index.md"
+      #   label: "Navbar"
+      #   name: "navbar"
+      #   fields:
+      #     - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
+      #     - {
+      #         label: "Menu Items",
+      #         name: "menuItems",
+      #         widget: "list",
+      #         fields:
+      #           [
+      #             { label: "Label", name: "label", widget: "string" },
+      #             { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
+      #             { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
+      #           ],
+      #       }
       - file: "src/pages/footer/index.md"
         label: "Footer"
         name: "footer"

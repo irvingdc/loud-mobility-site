@@ -1,13 +1,12 @@
 import React from "react"
 import * as classes from "./index.module.less"
 import { Link } from "gatsby"
-import plane from "images/mail.svg"
+import marked from "marked"
 
-export default () => <div className={classes.container}>
+export default ({ content, icon }) => <div className={classes.container}>
     <div>
-        <img src={plane} alt="Icono Avion" />
-        <h1>Order Sent!</h1>
-        <p>We'll contact you very soon.</p>
+        <img src={icon.image.publicURL || icon.image} alt={icon.alt} />
+        <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
         <Link to="/">
             <button>Go Home</button>
         </Link>
