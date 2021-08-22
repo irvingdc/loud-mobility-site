@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Footer from 'components/shared/Footer'
 
 const FooterPreview = ({ entry, widgetFor }) => {
   return (
-    <Footer/>
+    <h3 style={{ padding: "0px 30px" }}>Preview not available.</h3>
   )
 }
 

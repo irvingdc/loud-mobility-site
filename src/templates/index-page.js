@@ -17,7 +17,8 @@ export const IndexPageTemplate = ({
   topIcons,
   partners,
   testimonials,
-  packages
+  packages,
+  isPreview
 }) => {
   let [service, setService] = useState(null)
 
@@ -27,15 +28,15 @@ export const IndexPageTemplate = ({
     scrollTo("booking")
   }
   return <>
-    <Nav />
+    <Nav isPreview={isPreview} />
     <Meta url="/" />
     <Intro title={title} topIcons={topIcons} />
     <BookingCards packages={packages} setService={handleServiceChange} />
     <BookingForm service={service} setService={handleServiceChange} />
-    <BlogRoll />
+    {isPreview ? null : <BlogRoll />}
     <QuotesBlock testimonials={testimonials} />
     <Partners partners={partners} />
-    <Footer />
+    {isPreview ? null : <Footer />}
   </>
 }
 
