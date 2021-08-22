@@ -6,3 +6,4 @@ content: >-
 icon:
   image: /img/mail.svg
   alt: Paper plane icon
+---
