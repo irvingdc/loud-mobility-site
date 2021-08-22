@@ -1,4 +1,5 @@
 ---
+templateKey: nav
 links:
   - label: Services
     linkURL: /#services
