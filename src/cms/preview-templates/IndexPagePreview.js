@@ -13,6 +13,7 @@ const IndexPagePreview = ({ entry, getAsset }) => {
         partners={data.partners}
         testimonials={data.testimonials}
         packages={data.packages}
+        isPreview={true}
       />
     )
   } else {
