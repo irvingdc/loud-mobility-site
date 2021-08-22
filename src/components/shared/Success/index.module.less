@@ -5,15 +5,21 @@
   min-height: calc(100vh - 130px);
   width: 100vw;
   flex-direction: column;
-  div {
+  > div {
     position: relative;
     text-align: center;
+    div{
+      max-width: 400px;
+    }
   }
   img {
     position: absolute;
     opacity: 0.5;
-    z-index: 0;
+    z-index: -10;
     top: -100px;
+    left: 10%;
+    width: 80%;
+
   }
   *:not(img) {
     z-index: 20;
@@ -26,7 +32,7 @@
     margin: 0;
   }
   p {
-    padding: 40px 10px 30px;
+    padding: 20px 10px 30px;
     font-size: 1.2rem;
   }
   button {
