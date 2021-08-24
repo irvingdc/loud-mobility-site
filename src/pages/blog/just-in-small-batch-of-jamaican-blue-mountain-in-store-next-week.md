@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Learning to ride at 65
+title: LEARNING TO RIDE OVER 60
 date: 2017-01-04T15:04:10.000Z
 description: We’re proud to support riders from all walks of life to get riding
   and stay roadworthy all year round. Rachel learned to ride at 65, learn how
