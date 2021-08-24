@@ -9,7 +9,7 @@ description: Starting cycling in London can be daunting. You'll almost certainly
   really simple to start riding in London, and better yet, there are loads of
   free and fun resources to help you do it.
 featuredpost: true
-featuredimage: /img/chemex.jpg
+featuredimage: /img/fernando-meloni-va6b5ag3jvo-unsplash.jpg
 ---
 Starting cycling in London can be daunting. You'll almost certainly have had someone telling you "its terrifying you wont catch me doing it" or worse yet had your ear chewed off about all the gear and kit you need to have to 'reeaaally be a cyclist in the city'. We're here to share that actually its really simple to start riding in London, and better yet, there are loads of free and fun resources to help you do it.
 
