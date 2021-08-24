@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Simple steps to start riding in London
+title: SIMPLE STEPS TO START RIDING IN LONDON
 date: 2021-08-17T23:36:33.766Z
 description: Starting cycling in London can be daunting. Click here for all you
   need to start cycling in the city.
