@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: All about LOUD Mobility
+title: ALL ABOUT LOUD MOBILITY
 date: 2021-08-17T23:37:06.631Z
 description: So what's this all about then? Why the name, whats the reason, what
   do we even do!?... Find out here
