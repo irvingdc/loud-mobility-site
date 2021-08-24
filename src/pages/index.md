@@ -20,41 +20,42 @@ packages:
     price: "29.99"
     link: /
     bullets:
-      - Single service for a single bike
-      - Get a fair quote from a trusted partner
+      - Service support for a single bike
+      - Flat transport fee to fix your bike hassle free
+      - Get a fair and tailored quote, from a trusted partner
   package2:
     name: RIDER
     price: "14.99"
     bullets:
-      - Regular servicing to keep your bike roadworthy year-round
-      - Keep your costs low withthis package
-      - No need to keep booking with service reminders
+      - Service support year round to keep your bike roadworthy
+      - "Keep costs low with our quarterly subscription "
+      - Never miss a service, we'll remind you
     link: /
   package3:
     name: TEAM
     price: "18.99"
     bullets:
-      - A single service for 3 or more bikes
-      - Get fair individual quotes from a trusted partner
-      - Hassle free fixes and maintenance for the whole team
+      - Hassle free servicing for the whole team
+      - Save on single collections of 3 or more bikes
+      - Service quotes provided per bike
     link: /
 testimonials:
   heading: Word on the street is...
   testimonial1:
-    image: /img/screen-shot-2021-08-16-at-3.11.35-p.m..png
-    name: Erkut - Tower Hamlets
-    text: Loud is such a great idea. The subscription service is going to save me a
+    image: /img/jordan-brierley-rgw8f-gp49u-unsplash.jpg
+    name: Jordan
+    text: Loud is such a great idea! The subscription service is going to save me a
       ton of hassle taking care of my road bike.
   testimonial2:
     text: I love that loud are already working with my favorite bike shop. There's a
       real sense of community.
-    name: Antony - Crouch End
-    image: /img/screen-shot-2021-08-16-at-3.11.35-p.m..png
+    name: Ben
+    image: /img/ben-parker-ohkelokq3re-unsplash.jpg
   testimonial3:
-    image: /img/screen-shot-2021-08-16-at-3.11.35-p.m..png
+    image: /img/dmitriy-frantsev-pi5pwmikass-unsplash.jpg
     text: This has been a live saver for our family. Thanks for saving the bike we
       dug out from the garage. We are now ciclying to school every day.
-    name: Kathleen - Balham
+    name: Katia
 partners:
   heading: Partners
   items:
