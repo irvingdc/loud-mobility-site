@@ -251,27 +251,26 @@ collections:
   - name: "navbarAndFooter"
     label: "Navbar & Footer"
     files:
-      # - file: "src/pages/navbar/index.md"
-      #   label: "Navbar"
-      #   name: "navbar"
-      #   fields:
-      #     - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
-      #     - {
-      #         label: "Menu Items",
-      #         name: "menuItems",
-      #         widget: "list",
-      #         fields:
-      #           [
-      #             { label: "Label", name: "label", widget: "string" },
-      #             { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
-      #             { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
-      #           ],
-      #       }
       - file: "src/pages/footer/index.md"
         label: "Footer"
         name: "footer"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "footer" }
+          - {
+              label: "Links",
+              name: "links",
+              widget: "list",
+              fields:
+                [
+                  { label: "Label", name: "label", widget: "string" },
+                  { label: "Link URL", name: "linkURL", widget: "string" },
+                ],
+            }
+      - file: "src/pages/nav/index.md"
+        label: "Nav"
+        name: "nav"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "nav" }
           - {
               label: "Links",
               name: "links",
