@@ -5,6 +5,6 @@ links:
     linkURL: /#services
   - linkURL: /#booking
     label: Booking
-  - label: Blog
+  - label: Our Blog
     linkURL: /#blog
 ---
