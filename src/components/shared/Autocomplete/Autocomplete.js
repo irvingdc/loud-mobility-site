@@ -45,7 +45,6 @@ export default ({
 
     formOnChange(e.target.value, "address")
 
-    let API_KEY = "ak_ksdk4bsyiEE6rl63vzXtJLk5kXu4E";
     let query = e.target.value;
 
     if (query.length >= 3) {
@@ -56,7 +55,7 @@ export default ({
       }, 300);
 
       // TODO: move API key to env variables
-      fetch(`https://api.ideal-postcodes.co.uk/v1/autocomplete/addresses?api_key=${API_KEY}&query=${query}`, {
+      fetch(`/.netlify/functions/find-address?query=${query}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
