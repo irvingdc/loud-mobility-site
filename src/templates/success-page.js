@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Nav from "components/shared/Nav";
-import Success from "components/shared/Success";
-import Meta from "components/shared/Meta";
+import Nav from 'components/shared/Nav'
+import Success from 'components/shared/Success'
+import Meta from 'components/shared/Meta'
 
-export const SuccessPageTemplate = ({
-  icon,
-  content,
-  isPreview
-}) => {
-  return <>
-    <Nav isPreview={isPreview} />
-    <Meta url="/success/" />
-    <Success content={content} icon={icon} />
-  </>
+export const SuccessPageTemplate = ({ icon, content, isPreview }) => {
+  return (
+    <>
+      <Nav isPreview={isPreview} />
+      <Meta url="/success/" />
+      <Success content={content} icon={icon} />
+    </>
+  )
 }
 
 SuccessPageTemplate.propTypes = {
@@ -48,7 +46,7 @@ export const pageQuery = graphql`
       frontmatter {
         content
         icon {
-          image{
+          image {
             publicURL
           }
           alt

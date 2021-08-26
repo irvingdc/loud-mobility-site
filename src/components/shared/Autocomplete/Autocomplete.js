@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react"
-import * as classes from "./index.module.less"
-import close_icon from "images/error.png"
-import Spinner from "../Spinner/Spinner";
+import React, { useState, useEffect } from 'react'
+import * as classes from './index.module.less'
+import close_icon from 'images/error.png'
+import Spinner from '../Spinner/Spinner'
 
 let validateField = (value, validateNow, required = true) => {
-  if (!validateNow) return null;
+  if (!validateNow) return null
 
   if (required) {
-    return !!value ? null : "Required."
+    return !!value ? null : 'Required.'
   } else {
     return null
   }
-};
+}
 
 export default ({
   placeholder,
@@ -21,107 +21,108 @@ export default ({
   validateNow,
   required,
   disabled,
-  formOnChange }) => {
-
+  formOnChange,
+}) => {
   const messagestList = {
-    "input_prompt": "Enter at least three characters to get suggestions.",
-    "no_suggestions": "No suggestions found."
+    input_prompt: 'Enter at least three characters to get suggestions.',
+    no_suggestions: 'No suggestions found.',
   }
 
-  let [suggestions, setSuggestions] = useState([]);
-  let [activeSuggestion, setActiveSuggestion] = useState(-1);
-  let [showSuggestions, setShowSuggestions] = useState(false);
-  let [showSpinner, setShowSpinner] = useState(false);
-  const [inputMessage, setInputMessage] = useState(messagestList["input_prompt"]);
+  let [suggestions, setSuggestions] = useState([])
+  let [activeSuggestion, setActiveSuggestion] = useState(-1)
+  let [showSuggestions, setShowSuggestions] = useState(false)
+  let [showSpinner, setShowSpinner] = useState(false)
+  const [inputMessage, setInputMessage] = useState(
+    messagestList['input_prompt']
+  )
 
-  let error = validateField(value, validateNow, required);
+  let error = validateField(value, validateNow, required)
 
-  const onChange = e => {
-
+  const onChange = (e) => {
     if (e.keyCode === 38 || e.keyCode === 40 || e.keyCode === 13) {
       //console.log("Arrow!!");
-      return;
+      return
     }
 
-    formOnChange(e.target.value, "address")
+    formOnChange(e.target.value, 'address')
 
-    let query = e.target.value;
+    let query = e.target.value
 
     if (query.length >= 3) {
-      setShowSpinner(true);
-      setShowSuggestions(false);
+      setShowSpinner(true)
+      setShowSuggestions(false)
       setTimeout(() => {
         //
-      }, 300);
+      }, 300)
 
       // TODO: move API key to env variables
       fetch(`/.netlify/functions/find-address?query=${query}`, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         mode: 'cors',
       })
         .then((response) => response.json())
         .then((data) => {
-          setSuggestions(data.result.hits);
-          setActiveSuggestion(0);
-          setShowSpinner(false);
-          setShowSuggestions(true);
+          setSuggestions(data.result.hits)
+          setActiveSuggestion(0)
+          setShowSpinner(false)
+          setShowSuggestions(true)
           //console.log(data.result.hits);
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error('Error:', error)
           //setLoading(false);
           alert(
-            "An error happened, please send us an email to info@loudmobility.com"
-          );
-        });
+            'An error happened, please send us an email to info@loudmobility.com'
+          )
+        })
     } else {
-      setShowSpinner(false);
-      setShowSuggestions(false);
-      setInputMessage(messagestList["input_prompt"]);
+      setShowSpinner(false)
+      setShowSuggestions(false)
+      setInputMessage(messagestList['input_prompt'])
     }
-  };
+  }
 
-  const onClick = e => {
+  const onClick = (e) => {
     // console.log("CLICK!!");
 
-    formOnChange(e.target.innerText, "address")
-    setShowSuggestions(false);
-    setInputMessage(null);
-  };
+    formOnChange(e.target.innerText, 'address')
+    setShowSuggestions(false)
+    setInputMessage(null)
+  }
 
-  const onKeyDown = e => {
+  const onKeyDown = (e) => {
     // User pressed the enter key
     if (e.keyCode === 13) {
       // console.log("ENTER!!!");
-      formOnChange(suggestions[activeSuggestion].suggestion, "address");
-      setShowSuggestions(false);
-      setInputMessage(null);
+      formOnChange(suggestions[activeSuggestion].suggestion, 'address')
+      setShowSuggestions(false)
+      setInputMessage(null)
     }
     // User pressed the up arrow
     else if (e.keyCode === 38) {
       if (activeSuggestion === 0) {
-        return;
+        return
       }
-      setActiveSuggestion(activeSuggestion - 1);
+      setActiveSuggestion(activeSuggestion - 1)
     }
     // User pressed the down arrow
     else if (e.keyCode === 40) {
       if (activeSuggestion + 1 === suggestions.length) {
-        return;
+        return
       }
-      setActiveSuggestion(activeSuggestion + 1);
+      setActiveSuggestion(activeSuggestion + 1)
     }
-  };
+  }
 
   const clearInput = () => {
-    formOnChange("", "address");
-    setInputMessage(messagestList["input_prompt"]);
-    setShowSuggestions(false);
-    setSuggestions([]);
-    setActiveSuggestion(-1);
+    formOnChange('', 'address')
+    setInputMessage(messagestList['input_prompt'])
+    setShowSuggestions(false)
+    setSuggestions([])
+    setActiveSuggestion(-1)
   }
 
   function SuggestionList({ showSuggestions, suggestions, activeSuggestion }) {
@@ -137,32 +138,33 @@ export default ({
         return (
           <ul className={classes.suggestionsList}>
             {suggestions.map((item, index) => {
-              let isActive;
+              let isActive
               // Flag the active suggestion with a class
               if (index === activeSuggestion) {
-                isActive = true;
+                isActive = true
               }
 
               return (
                 <li
-                  className={isActive ? classes.activeSuggestion : classes.suggestion}
+                  className={
+                    isActive ? classes.activeSuggestion : classes.suggestion
+                  }
                   key={item.suggestion}
                   onClick={onClick}
                 >
                   {item.suggestion}
                 </li>
-              );
+              )
             })}
           </ul>
-        );
+        )
       } else {
-        setInputMessage("No suggestions found");
+        setInputMessage('No suggestions found')
         return (
-
           // <ul className={classes.suggestionsList}>
-          //   <li 
-          //     className={classes.suggestion} 
-          //     key={"no_suggestions_li"} 
+          //   <li
+          //     className={classes.suggestion}
+          //     key={"no_suggestions_li"}
           //     onClick={onClick}
           //     style={{textAlign:"center"}}
           //   >
@@ -173,7 +175,7 @@ export default ({
           //     <em>No suggestions!</em>
           // </div>
           <></>
-        );
+        )
       }
     } else {
       return <></>
@@ -183,33 +185,34 @@ export default ({
   return (
     <>
       <div className={classes.inputContainer}>
-        <label
-          htmlFor={"address"}>{label}
-        </label>
+        <label htmlFor={'address'}>{label}</label>
 
-        {value != ""
-          ? <img
+        {value != '' ? (
+          <img
             className={classes.closeIcon}
             src={close_icon}
             alt="clear"
             onClick={clearInput}
           />
-          : <></>
-        }
+        ) : (
+          <></>
+        )}
 
-        {showSpinner
-          ? <div className={classes.spinnerContainer}>
+        {showSpinner ? (
+          <div className={classes.spinnerContainer}>
             <Spinner />
           </div>
-          : <></>
-        }
+        ) : (
+          <></>
+        )}
 
-        {showSpinner
-          ? <div className={classes.spinnerContainer}>
+        {showSpinner ? (
+          <div className={classes.spinnerContainer}>
             <Spinner />
           </div>
-          : <></>
-        }
+        ) : (
+          <></>
+        )}
 
         <input
           className={classes.postCodeInput}
@@ -217,7 +220,7 @@ export default ({
           type="text"
           onChange={onChange}
           placeholder={placeholder}
-          autoComplete={"off"}
+          autoComplete={'off'}
           disabled={disabled}
           onKeyDown={onKeyDown}
           value={value}
@@ -231,15 +234,12 @@ export default ({
 
         {error ? (
           <p className={classes.error}>{error}</p>
+        ) : inputMessage ? (
+          <p className={classes.message}>{inputMessage}</p>
         ) : (
-          inputMessage ? (
-            <p className={classes.message}>{inputMessage}</p>
-          ) : (
-            <p className={classes.nomessage}>---</p>
-          )
+          <p className={classes.nomessage}>---</p>
         )}
-
       </div>
     </>
-  );
-};
+  )
+}

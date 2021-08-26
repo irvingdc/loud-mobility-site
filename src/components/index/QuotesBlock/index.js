@@ -1,8 +1,8 @@
-import React from "react";
-import * as classes from "./index.module.less";
-import background from "images/L.svg";
-import Quote from "components/shared/Quote";
-import Layout from "components/shared/Layout";
+import React from 'react'
+import * as classes from './index.module.less'
+import background from 'images/L.svg'
+import Quote from 'components/shared/Quote'
+import Layout from 'components/shared/Layout'
 
 export default ({ testimonials }) => {
   return (
@@ -27,5 +27,5 @@ export default ({ testimonials }) => {
       </Layout>
       <img src={background} alt="Background Image" />
     </div>
-  );
-};
+  )
+}

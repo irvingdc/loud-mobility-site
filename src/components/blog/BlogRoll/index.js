@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from 'components/blog/PreviewCompatibleImage'
-import * as classes from "./index.module.less"
+import * as classes from './index.module.less'
 
 class BlogRoll extends React.Component {
   render() {
@@ -27,9 +27,7 @@ class BlogRoll extends React.Component {
                 ) : null}
                 <header>
                   <h5>{post.frontmatter.title}</h5>
-                  <p>
-                    {post.frontmatter.description}
-                  </p>
+                  <p>{post.frontmatter.description}</p>
                 </header>
               </Link>
             ))}

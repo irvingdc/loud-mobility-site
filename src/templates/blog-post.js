@@ -11,9 +11,13 @@ export const BlogPostTemplate = ({
   title,
   helmet,
 }) => {
-
   return (
-    <Post content={content} title={title} helmet={helmet} contentComponent={contentComponent} />
+    <Post
+      content={content}
+      title={title}
+      helmet={helmet}
+      contentComponent={contentComponent}
+    />
   )
 }
 

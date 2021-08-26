@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Nav from "components/shared/Nav";
-import Intro from "components/index/Intro";
-import BookingCards from "components/index/BookingCards";
-import BookingForm from "components/index/BookingForm";
-import BlogRoll from "components/blog/BlogRoll";
-import QuotesBlock from "components/index/QuotesBlock";
-import Partners from "components/index/Partners";
-import Footer from "components/shared/Footer";
-import Meta from "components/shared/Meta";
-import { scrollTo } from "src/utils/functions"
+import Nav from 'components/shared/Nav'
+import Intro from 'components/index/Intro'
+import BookingCards from 'components/index/BookingCards'
+import BookingForm from 'components/index/BookingForm'
+import BlogRoll from 'components/blog/BlogRoll'
+import QuotesBlock from 'components/index/QuotesBlock'
+import Partners from 'components/index/Partners'
+import Footer from 'components/shared/Footer'
+import Meta from 'components/shared/Meta'
+import { scrollTo } from 'src/utils/functions'
 
 export const IndexPageTemplate = ({
   title,
@@ -18,26 +18,28 @@ export const IndexPageTemplate = ({
   partners,
   testimonials,
   packages,
-  isPreview
+  isPreview,
 }) => {
   let [service, setService] = useState(null)
 
-  let handleServiceChange = val => {
-    console.log("handleServiceChange", val)
+  let handleServiceChange = (val) => {
+    console.log('handleServiceChange', val)
     setService(val)
-    scrollTo("booking")
+    scrollTo('booking')
   }
-  return <>
-    <Nav isPreview={isPreview} />
-    <Meta url="/" />
-    <Intro title={title} topIcons={topIcons} />
-    <BookingCards packages={packages} setService={handleServiceChange} />
-    <BookingForm service={service} setService={handleServiceChange} />
-    {isPreview ? null : <BlogRoll />}
-    <QuotesBlock testimonials={testimonials} />
-    <Partners partners={partners} />
-    {isPreview ? null : <Footer />}
-  </>
+  return (
+    <>
+      <Nav isPreview={isPreview} />
+      <Meta url="/" />
+      <Intro title={title} topIcons={topIcons} />
+      <BookingCards packages={packages} setService={handleServiceChange} />
+      <BookingForm service={service} setService={handleServiceChange} />
+      {isPreview ? null : <BlogRoll />}
+      <QuotesBlock testimonials={testimonials} />
+      <Partners partners={partners} />
+      {isPreview ? null : <Footer />}
+    </>
+  )
 }
 
 const IconType = PropTypes.shape({
@@ -68,14 +70,14 @@ IndexPageTemplate.propTypes = {
   }),
   partners: PropTypes.shape({
     items: PropTypes.array,
-    heading: PropTypes.string
+    heading: PropTypes.string,
   }),
   packages: PropTypes.shape({
     link: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.string,
-    list: PropTypes.array
-  })
+    list: PropTypes.array,
+  }),
 }
 
 const IndexPage = ({ data }) => {
@@ -106,47 +108,47 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        topIcons { 
+        topIcons {
           icon1 {
-            image{
+            image {
               publicURL
             }
             label
           }
           icon2 {
-            image{
+            image {
               publicURL
             }
             label
           }
           icon3 {
-            image{
+            image {
               publicURL
             }
             label
           }
           icon4 {
-            image{
+            image {
               publicURL
             }
             label
           }
         }
 
-        packages{
-          package1{
+        packages {
+          package1 {
             bullets
             link
             name
             price
           }
-          package2{
+          package2 {
             bullets
             link
             name
             price
           }
-          package3{
+          package3 {
             bullets
             link
             name
@@ -154,24 +156,24 @@ export const pageQuery = graphql`
           }
         }
 
-        testimonials { 
+        testimonials {
           heading
           testimonial1 {
-            image{
+            image {
               publicURL
             }
             name
             text
           }
           testimonial2 {
-            image{
+            image {
               publicURL
             }
             name
             text
           }
           testimonial3 {
-            image{
+            image {
               publicURL
             }
             name
@@ -188,7 +190,6 @@ export const pageQuery = graphql`
             alt
           }
         }
-        
       }
     }
   }

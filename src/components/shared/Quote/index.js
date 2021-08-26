@@ -1,6 +1,6 @@
-import React from "react";
-import * as classes from "./index.module.less";
-import bird from "images/small_bird.png";
+import React from 'react'
+import * as classes from './index.module.less'
+import bird from 'images/small_bird.png'
 
 export default ({ content, author, image }) => {
   return (
@@ -16,5 +16,5 @@ export default ({ content, author, image }) => {
         <div className={classes.author}>{author}</div>
       </div>
     </div>
-  );
-};
+  )
+}

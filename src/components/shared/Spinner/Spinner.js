@@ -1,12 +1,17 @@
-import React from "react"
-import * as classes from "./index.module.less"
+import React from 'react'
+import * as classes from './index.module.less'
 
-export default () =>{
+export default () => {
   return (
     <>
       <div className={classes.littleContainer}>
-        <div className={classes.ldsRing}><div></div><div></div><div></div><div></div></div>
+        <div className={classes.ldsRing}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </>
-  );
-};
+  )
+}

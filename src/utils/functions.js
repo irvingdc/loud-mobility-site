@@ -4,80 +4,81 @@ export function validateEmail(mail) {
       mail
     )
   ) {
-    return true;
+    return true
   }
-  return false;
+  return false
 }
 
 export const decodeEntities = (function () {
-  if (typeof document === "undefined") return () => { };
+  if (typeof document === 'undefined') return () => {}
   // this prevents any overhead from creating the object each time
-  var element = document.createElement("div");
+  var element = document.createElement('div')
 
   function decodeHTMLEntities(str) {
-    if (str && typeof str === "string") {
+    if (str && typeof str === 'string') {
       // strip script/html tags
-      str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, "");
-      str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, "");
-      element.innerHTML = str;
-      str = element.textContent;
-      element.textContent = "";
+      str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gim, '')
+      str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gim, '')
+      element.innerHTML = str
+      str = element.textContent
+      element.textContent = ''
     }
 
-    return str;
+    return str
   }
-  return decodeHTMLEntities;
-})();
+  return decodeHTMLEntities
+})()
 
 export const getMonthString = (number) => {
   let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  return months[number];
-};
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  return months[number]
+}
 
 export const parseWpUrl = (node) => {
-  let { slug, categories, link } = node;
+  let { slug, categories, link } = node
   if (
     !!categories &&
     !!categories.nodes &&
     !!categories.nodes.length &&
     categories.nodes[0].slug
   ) {
-    return `/${!!categories.nodes &&
+    return `/${
+      !!categories.nodes &&
       !!categories.nodes.length &&
       categories.nodes[0].slug
-      }/${slug}/`;
+    }/${slug}/`
   } else {
-    return link && !link.includes("//wp.appinchina.co/") ? link : "/" + slug;
+    return link && !link.includes('//wp.appinchina.co/') ? link : '/' + slug
   }
-};
+}
 
 function getURLParameter(name) {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return
   return decodeURIComponent(
     (RegExp(`${name}=(.+?)(&|$)`).exec(window.location.search) || [
       undefined,
-      "error",
+      'error',
     ])[1]
-  );
+  )
 }
 
-export const scrollTo = id => {
-  if (typeof window === "undefined" || typeof document === "undefined") return;
+export const scrollTo = (id) => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return
   window.scroll({
     top: document.getElementById(id).offsetTop,
-    behavior: 'smooth'
-  });
+    behavior: 'smooth',
+  })
 }
