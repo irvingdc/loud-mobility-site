@@ -1,11 +1,9 @@
 const fetch = require('node-fetch')
 
-let API_KEY = "ak_ksdk4bsyiEE6rl63vzXtJLk5kXu4E";
-
 exports.handler = async (event, context) => {
     let data
     try {
-        const API_ENDPOINT = `https://api.ideal-postcodes.co.uk/v1/autocomplete/addresses?api_key=${API_KEY}&query=${event.queryStringParameters.query}`
+        const API_ENDPOINT = `https://api.ideal-postcodes.co.uk/v1/autocomplete/addresses?api_key=${process.env.GATSBY_ADDRESS_API_KEY}&query=${event.queryStringParameters.query}`
         console.log("API_ENDPOINT: ", API_ENDPOINT)
         let response = await fetch(API_ENDPOINT)
         data = await response.json()
