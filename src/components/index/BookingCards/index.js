@@ -20,6 +20,7 @@ export default ({ packages, setService }) => {
           price={package1.price}
           list={package1.bullets}
           link={package1.link}
+          label={package1.label}
           onBook={book}
         />
         <Card
@@ -28,7 +29,7 @@ export default ({ packages, setService }) => {
           list={package2.bullets}
           link={package2.link}
           dark
-          extra="(per service)"
+          extra={package2.label}
           onBook={book}
         />
         <Card
@@ -36,7 +37,7 @@ export default ({ packages, setService }) => {
           price={package3.price}
           list={package3.bullets}
           link={package3.link}
-          extra="(per service)"
+          extra={package3.label}
           onBook={book}
         />
       </Layout>

@@ -129,6 +129,7 @@ collections:
                       [
                         { label: Name, name: name, widget: string },
                         { label: Price, name: price, widget: string },
+                        { label: Label, name: label, widget: string },
                         {
                           label: "Learn More Link",
                           name: link,
@@ -150,6 +151,7 @@ collections:
                       [
                         { label: Name, name: name, widget: string },
                         { label: Price, name: price, widget: string },
+                        { label: Label, name: label, widget: string },
                         {
                           label: "Learn More Link",
                           name: link,
@@ -171,6 +173,7 @@ collections:
                       [
                         { label: Name, name: name, widget: string },
                         { label: Price, name: price, widget: string },
+                        { label: Label, name: label, widget: string },
                         {
                           label: "Learn More Link",
                           name: link,
