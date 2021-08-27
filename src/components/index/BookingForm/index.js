@@ -9,13 +9,9 @@ import Autocomplete from '../../shared/Autocomplete/Autocomplete'
 
 const encode = (data) => {
     const formData = new FormData()
-    Object.keys(data).map((key) => {
-        if (key === 'file') {
-            formData.append(key, data[key], data[key].name)
-        } else {
-            formData.append(key, data[key])
-        }
-    })
+    for (const key of Object.keys(data)) {
+        formData.append(key, data[key])
+    }
     return formData
 }
 
@@ -64,7 +60,7 @@ export default ({ service, setService }) => {
             console.log("RESULTS", results)
             //if (results[0] && results[1]) {
             //    console.log("should redirect")
-                redirect()
+            redirect()
             //}
             //else throw new Error("Error during requests")
         } catch (error) {
@@ -80,7 +76,7 @@ export default ({ service, setService }) => {
                 body: encode({
                     ...values,
                     service,
-                    'form-name': 'booking-form',
+                    'form-name': 'booking',
                 }),
             })
         }
@@ -132,22 +128,12 @@ export default ({ service, setService }) => {
             <Layout>
                 <form
                     onSubmit={(e) => e.preventDefault()}
-                    name="booking-form"
+                    name="booking"
                     data-netlify="true"
                     method="post"
                     action="/"
                 >
-                    <input type="hidden" name="form-name" value="booking-form" />
-                    <input type="hidden" name="address" value="" />
-                    <input type="hidden" name="email" value="" />
-                    <input type="hidden" name="file" value="" />
-                    <input type="hidden" name="name" value="" />
-                    <input type="hidden" name="newsletter_signup" value="" />
-                    <input type="hidden" name="number_bikes" value="" />
-                    <input type="hidden" name="phone_number" value="" />
-                    <input type="hidden" name="pickuptime" value="" />
-                    <input type="hidden" name="service" value="" />
-                    <input type="hidden" name="terms_and_conditions" value="" />
+                    <input type="hidden" name="form-name" value="booking" />
                     <div className={classes.smallInputContainer}>
                         <Input
                             placeholder="CHOOSE YOUR SERVICE"
@@ -253,7 +239,7 @@ export default ({ service, setService }) => {
                         {/* TODO: use disabled on the ImageInput component */}
                         <ImageInput
                             onChange={handleChange}
-                            name="file"
+                            name="attachment"
                             disabled={loading}
                         />
                     </div>
